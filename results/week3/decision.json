@@ -1,0 +1,13 @@
+{
+  "w_scale": 0.7,
+  "stimulus": "JO-C/E",
+  "rule": "full if <= 10 s per simulated second, else best-fidelity passing subnetwork",
+  "per_host": {
+    "colab": {
+      "network": "full",
+      "engine": "numba",
+      "s_per_sim_s": 6.25,
+      "full_best": "numba: 6.25 s"
+    }
+  }
+}

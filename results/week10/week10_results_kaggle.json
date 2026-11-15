@@ -1,0 +1,1319 @@
+{
+ "host": "kaggle",
+ "quick": false,
+ "gpu": "Tesla T4 (x2)",
+ "test_seeds": [
+  93000,
+  93049
+ ],
+ "warm_from_week9": "/tmp/arm_simulation/brain/data/week9/week9_connectome__c4.pkl",
+ "recipes": {
+  "C4": "week 9: 3,000 neurons re-chosen on all data, release region 1/3 of the fit, ridge",
+  "C6": "C4 + press rows 25% of the fit (still linear)",
+  "G": "grip-gated: two linear motion maps, switched by the decoded grip (week 9's offline G)"
+ },
+ "table": [
+  {
+   "policy": "connectome, C4",
+   "success": "46/50",
+   "success rate": 0.92,
+   "95% CI": "81%-97%",
+   "placement error, successes (mm, median)": 14.3,
+   "placement error, all lifted (mm, median)": 13.8,
+   "time to complete (s, median)": 3.08,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "random network, C4",
+   "success": "50/50",
+   "success rate": 1.0,
+   "95% CI": "93%-100%",
+   "placement error, successes (mm, median)": 5.4,
+   "placement error, all lifted (mm, median)": 5.4,
+   "time to complete (s, median)": 3.26,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "connectome, C6",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 293.9,
+   "time to complete (s, median)": NaN,
+   "lifted": 1.0,
+   "carried to zone": 0.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "expert, fix B",
+   "success": "50/50",
+   "success rate": 1.0,
+   "95% CI": "93%-100%",
+   "placement error, successes (mm, median)": 2.6,
+   "placement error, all lifted (mm, median)": 2.6,
+   "time to complete (s, median)": 1.84,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "MLP on 8 signals",
+   "success": "50/50",
+   "success rate": 1.0,
+   "95% CI": "93%-100%",
+   "placement error, successes (mm, median)": 2.6,
+   "placement error, all lifted (mm, median)": 2.6,
+   "time to complete (s, median)": 1.84,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "linear on 8 signals",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 16.8,
+   "time to complete (s, median)": NaN,
+   "lifted": 0.54,
+   "carried to zone": 0.46,
+   "stalled": 0.92
+  },
+  {
+   "policy": "linear on 8 signals, C4 weights",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 333.1,
+   "time to complete (s, median)": NaN,
+   "lifted": 1.0,
+   "carried to zone": 0.3,
+   "stalled": 0.84
+  },
+  {
+   "policy": "linear on 8 signals, C6 weights",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 297.7,
+   "time to complete (s, median)": NaN,
+   "lifted": 0.04,
+   "carried to zone": 0.0,
+   "stalled": 0.96
+  },
+  {
+   "policy": "gated linear on 8 signals (G)",
+   "success": "34/50",
+   "success rate": 0.68,
+   "95% CI": "54%-79%",
+   "placement error, successes (mm, median)": 9.3,
+   "placement error, all lifted (mm, median)": 10.2,
+   "time to complete (s, median)": 2.4,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.32
+  }
+ ],
+ "outcomes": {
+  "connectome, C4": {
+   "success": 46,
+   "put down in zone, not finished": 2,
+   "still holding the cube": 2
+  },
+  "random network, C4": {
+   "success": 50
+  },
+  "connectome, C6": {
+   "dropped or put down outside the zone": 42,
+   "still holding the cube": 8
+  },
+  "expert, fix B": {
+   "success": 50
+  },
+  "MLP on 8 signals": {
+   "success": 50
+  },
+  "linear on 8 signals": {
+   "never lifted": 23,
+   "still holding the cube": 27
+  },
+  "linear on 8 signals, C4 weights": {
+   "still holding the cube": 50
+  },
+  "linear on 8 signals, C6 weights": {
+   "never lifted": 48,
+   "dropped or put down outside the zone": 2
+  },
+  "gated linear on 8 signals (G)": {
+   "put down in zone, not finished": 16,
+   "success": 34
+  }
+ },
+ "comparison": {
+  "headline": {
+   "success": 46,
+   "n": 50,
+   "ci": [
+    0.8116149745493629,
+    0.9684509967442093
+   ],
+   "passed": true
+  },
+  "wiring": {
+   "verdict": "no significant difference between the connectome and the random network on any milestone at n = 50",
+   "milestones": {
+    "lifted": {
+     "a": 1.0,
+     "b": 1.0,
+     "only_a": 0,
+     "only_b": 0,
+     "p": 1.0
+    },
+    "zone": {
+     "a": 1.0,
+     "b": 1.0,
+     "only_a": 0,
+     "only_b": 0,
+     "p": 1.0
+    },
+    "success": {
+     "a": 0.92,
+     "b": 1.0,
+     "only_a": 0,
+     "only_b": 4,
+     "p": 0.125
+    }
+   },
+   "secondary": {
+    "compared": true,
+    "placement_mm": {
+     "a": 14.3,
+     "b": 5.4,
+     "p": 0.0
+    },
+    "time_s": {
+     "a": 3.08,
+     "b": 3.26,
+     "p": 0.4324
+    }
+   },
+   "success": [
+    46,
+    50
+   ]
+  },
+  "readouts": {
+   "C4": {
+    "success": 46,
+    "n": 50,
+    "control": "linear on 8 signals, C4 weights",
+    "control_success": 0,
+    "control_n": 50,
+    "brain_needed": true
+   },
+   "C6": {
+    "success": 0,
+    "n": 50,
+    "control": "linear on 8 signals, C6 weights",
+    "control_success": 0,
+    "control_n": 50,
+    "brain_needed": true,
+    "only_this": 0,
+    "only_C4": 46,
+    "p_vs_C4": 2.842170943040401e-14
+   }
+  },
+  "best": {
+   "readout": "C4",
+   "success": 46,
+   "n": 50,
+   "target_50": false,
+   "counted_only_brain_needed": true
+  }
+ },
+ "lines": [
+  "HEADLINE: connectome, C4 on fresh seeds: 46/50 (95% CI 81%-97%); pass (>= 40/50): YES",
+  "WIRING (pre-registered, C4): no significant difference between the connectome and the random network on any milestone at n = 50. Success 46 vs 50.",
+  "   placement 14.3 vs 5.4 mm (p = 0.0), time 3.08 vs 3.26 s (p = 0.4324)",
+  "READOUT C4: 46/50; no-brain control (linear on 8 signals, C4 weights) 0/50 -> brain needed: True",
+  "READOUT C6: 0/50; vs C4: 0 seeds only C6, 46 only C4 (p = 2.84e-14); no-brain control (linear on 8 signals, C6 weights) 0/50 -> brain needed: True",
+  "BEST CONNECTOME READOUT: C4 at 46/50; 50/50 target reached: NO"
+ ],
+ "networks": {
+  "connectome, C4": {
+   "recipe": "C4",
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      1000.0,
+      1000.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 226.23497696899994
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 5612,
+     "alpha": [
+      3162.2776601683795,
+      3162.2776601683795
+     ],
+     "success": 0.23333333333333334,
+     "lifted": 0.7333333333333333,
+     "wall_s": 668.221003481
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 9580,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.23333333333333334,
+     "lifted": 0.7666666666666667,
+     "wall_s": 1131.4879262990003
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 13849,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.3333333333333333,
+     "lifted": 1.0,
+     "wall_s": 1631.277246519
+    }
+   ],
+   "cut": {
+    "n": 10,
+    "success": 0,
+    "success_rate": 0.0,
+    "ci": [
+     0.0,
+     0.2775401687666166
+    ],
+    "place_mm_success": null,
+    "place_mm_lifted": null,
+    "time_s": null,
+    "lifted_rate": 0.0,
+    "zone_rate": 0.0,
+    "lift_time_s": null,
+    "stalled_rate": 0.8,
+    "outcomes": {
+     "never lifted": 10
+    },
+    "grip_switches": 0.0
+   },
+   "hover": [
+    {
+     "seed": 93035,
+     "steps_near_target": 101,
+     "lowest_mm_above_rest": 20.2,
+     "final_dist_mm": 9.2
+    },
+    {
+     "seed": 93039,
+     "steps_near_target": 28,
+     "lowest_mm_above_rest": 20.9,
+     "final_dist_mm": 3.1
+    }
+   ],
+   "trap": [
+    {
+     "seed": 93011,
+     "trap_steps": 0,
+     "max_clear_mm": null
+    },
+    {
+     "seed": 93020,
+     "trap_steps": 1,
+     "max_clear_mm": 58.4
+    }
+   ],
+   "grip_agreement": 0.936,
+   "warm_check": {
+    "same_neurons": true,
+    "max_weight_diff": 0.0
+   },
+   "pool": 9532,
+   "per_seed": {
+    "93000": "success",
+    "93001": "success",
+    "93002": "success",
+    "93003": "success",
+    "93004": "success",
+    "93005": "success",
+    "93006": "success",
+    "93007": "success",
+    "93008": "success",
+    "93009": "success",
+    "93010": "success",
+    "93011": "put down in zone, not finished",
+    "93012": "success",
+    "93013": "success",
+    "93014": "success",
+    "93015": "success",
+    "93016": "success",
+    "93017": "success",
+    "93018": "success",
+    "93019": "success",
+    "93020": "put down in zone, not finished",
+    "93021": "success",
+    "93022": "success",
+    "93023": "success",
+    "93024": "success",
+    "93025": "success",
+    "93026": "success",
+    "93027": "success",
+    "93028": "success",
+    "93029": "success",
+    "93030": "success",
+    "93031": "success",
+    "93032": "success",
+    "93033": "success",
+    "93034": "success",
+    "93035": "still holding the cube",
+    "93036": "success",
+    "93037": "success",
+    "93038": "success",
+    "93039": "still holding the cube",
+    "93040": "success",
+    "93041": "success",
+    "93042": "success",
+    "93043": "success",
+    "93044": "success",
+    "93045": "success",
+    "93046": "success",
+    "93047": "success",
+    "93048": "success",
+    "93049": "success"
+   },
+   "wall_min": 11.463894813749999
+  },
+  "random network, C4": {
+   "recipe": "C4",
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      1000.0,
+      1000.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 207.21432581499994
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 4945,
+     "alpha": [
+      3162.2776601683795,
+      3162.2776601683795
+     ],
+     "success": 0.5666666666666667,
+     "lifted": 0.7,
+     "wall_s": 561.7328018570001
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 9174,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.3,
+     "lifted": 1.0,
+     "wall_s": 1009.4658550129998
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 12667,
+     "alpha": [
+      3162.2776601683795,
+      3162.2776601683795
+     ],
+     "success": 0.8333333333333334,
+     "lifted": 1.0,
+     "wall_s": 1400.855771137
+    }
+   ],
+   "cut": {
+    "n": 10,
+    "success": 0,
+    "success_rate": 0.0,
+    "ci": [
+     0.0,
+     0.2775401687666166
+    ],
+    "place_mm_success": null,
+    "place_mm_lifted": null,
+    "time_s": null,
+    "lifted_rate": 0.0,
+    "zone_rate": 0.0,
+    "lift_time_s": null,
+    "stalled_rate": 0.8,
+    "outcomes": {
+     "never lifted": 10
+    },
+    "grip_switches": 0.0
+   },
+   "hover": [],
+   "trap": [],
+   "grip_agreement": 0.931,
+   "warm_check": null,
+   "pool": 9131,
+   "per_seed": {
+    "93000": "success",
+    "93001": "success",
+    "93002": "success",
+    "93003": "success",
+    "93004": "success",
+    "93005": "success",
+    "93006": "success",
+    "93007": "success",
+    "93008": "success",
+    "93009": "success",
+    "93010": "success",
+    "93011": "success",
+    "93012": "success",
+    "93013": "success",
+    "93014": "success",
+    "93015": "success",
+    "93016": "success",
+    "93017": "success",
+    "93018": "success",
+    "93019": "success",
+    "93020": "success",
+    "93021": "success",
+    "93022": "success",
+    "93023": "success",
+    "93024": "success",
+    "93025": "success",
+    "93026": "success",
+    "93027": "success",
+    "93028": "success",
+    "93029": "success",
+    "93030": "success",
+    "93031": "success",
+    "93032": "success",
+    "93033": "success",
+    "93034": "success",
+    "93035": "success",
+    "93036": "success",
+    "93037": "success",
+    "93038": "success",
+    "93039": "success",
+    "93040": "success",
+    "93041": "success",
+    "93042": "success",
+    "93043": "success",
+    "93044": "success",
+    "93045": "success",
+    "93046": "success",
+    "93047": "success",
+    "93048": "success",
+    "93049": "success"
+   },
+   "wall_min": 32.942450480633326
+  },
+  "connectome, C6": {
+   "recipe": "C6",
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      3162.2776601683795,
+      3162.2776601683795
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 223.80150769500005
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 4917,
+     "alpha": [
+      10000.0,
+      3162.2776601683795
+     ],
+     "success": 0.0,
+     "lifted": 0.06666666666666667,
+     "wall_s": 611.3180762820002
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 7917,
+     "alpha": [
+      10000.0,
+      3162.2776601683795
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 955.721212246
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 11317,
+     "alpha": [
+      10000.0,
+      10000.0
+     ],
+     "success": 0.0,
+     "lifted": 0.26666666666666666,
+     "wall_s": 1380.3857007070005
+    }
+   ],
+   "cut": {
+    "n": 10,
+    "success": 0,
+    "success_rate": 0.0,
+    "ci": [
+     0.0,
+     0.2775401687666166
+    ],
+    "place_mm_success": null,
+    "place_mm_lifted": null,
+    "time_s": null,
+    "lifted_rate": 0.0,
+    "zone_rate": 0.0,
+    "lift_time_s": null,
+    "stalled_rate": 0.7,
+    "outcomes": {
+     "never lifted": 10
+    },
+    "grip_switches": 0.0
+   },
+   "hover": [
+    {
+     "seed": 93002,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 374.1
+    },
+    {
+     "seed": 93005,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 211.8
+    },
+    {
+     "seed": 93024,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 441.6
+    },
+    {
+     "seed": 93031,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 372.6
+    },
+    {
+     "seed": 93039,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 352.0
+    },
+    {
+     "seed": 93044,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 339.2
+    },
+    {
+     "seed": 93046,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 286.6
+    },
+    {
+     "seed": 93048,
+     "steps_near_target": 0,
+     "lowest_mm_above_rest": null,
+     "final_dist_mm": 312.4
+    }
+   ],
+   "trap": [],
+   "grip_agreement": 0.925,
+   "warm_check": null,
+   "pool": 9532,
+   "per_seed": {
+    "93000": "dropped or put down outside the zone",
+    "93001": "dropped or put down outside the zone",
+    "93002": "still holding the cube",
+    "93003": "dropped or put down outside the zone",
+    "93004": "dropped or put down outside the zone",
+    "93005": "still holding the cube",
+    "93006": "dropped or put down outside the zone",
+    "93007": "dropped or put down outside the zone",
+    "93008": "dropped or put down outside the zone",
+    "93009": "dropped or put down outside the zone",
+    "93010": "dropped or put down outside the zone",
+    "93011": "dropped or put down outside the zone",
+    "93012": "dropped or put down outside the zone",
+    "93013": "dropped or put down outside the zone",
+    "93014": "dropped or put down outside the zone",
+    "93015": "dropped or put down outside the zone",
+    "93016": "dropped or put down outside the zone",
+    "93017": "dropped or put down outside the zone",
+    "93018": "dropped or put down outside the zone",
+    "93019": "dropped or put down outside the zone",
+    "93020": "dropped or put down outside the zone",
+    "93021": "dropped or put down outside the zone",
+    "93022": "dropped or put down outside the zone",
+    "93023": "dropped or put down outside the zone",
+    "93024": "still holding the cube",
+    "93025": "dropped or put down outside the zone",
+    "93026": "dropped or put down outside the zone",
+    "93027": "dropped or put down outside the zone",
+    "93028": "dropped or put down outside the zone",
+    "93029": "dropped or put down outside the zone",
+    "93030": "dropped or put down outside the zone",
+    "93031": "still holding the cube",
+    "93032": "dropped or put down outside the zone",
+    "93033": "dropped or put down outside the zone",
+    "93034": "dropped or put down outside the zone",
+    "93035": "dropped or put down outside the zone",
+    "93036": "dropped or put down outside the zone",
+    "93037": "dropped or put down outside the zone",
+    "93038": "dropped or put down outside the zone",
+    "93039": "still holding the cube",
+    "93040": "dropped or put down outside the zone",
+    "93041": "dropped or put down outside the zone",
+    "93042": "dropped or put down outside the zone",
+    "93043": "dropped or put down outside the zone",
+    "93044": "still holding the cube",
+    "93045": "dropped or put down outside the zone",
+    "93046": "still holding the cube",
+    "93047": "dropped or put down outside the zone",
+    "93048": "still holding the cube",
+    "93049": "dropped or put down outside the zone"
+   },
+   "wall_min": 38.48271107875
+  }
+ },
+ "references": {
+  "expert, fix B": {
+   "dagger_log": null,
+   "per_seed": {
+    "93000": "success",
+    "93001": "success",
+    "93002": "success",
+    "93003": "success",
+    "93004": "success",
+    "93005": "success",
+    "93006": "success",
+    "93007": "success",
+    "93008": "success",
+    "93009": "success",
+    "93010": "success",
+    "93011": "success",
+    "93012": "success",
+    "93013": "success",
+    "93014": "success",
+    "93015": "success",
+    "93016": "success",
+    "93017": "success",
+    "93018": "success",
+    "93019": "success",
+    "93020": "success",
+    "93021": "success",
+    "93022": "success",
+    "93023": "success",
+    "93024": "success",
+    "93025": "success",
+    "93026": "success",
+    "93027": "success",
+    "93028": "success",
+    "93029": "success",
+    "93030": "success",
+    "93031": "success",
+    "93032": "success",
+    "93033": "success",
+    "93034": "success",
+    "93035": "success",
+    "93036": "success",
+    "93037": "success",
+    "93038": "success",
+    "93039": "success",
+    "93040": "success",
+    "93041": "success",
+    "93042": "success",
+    "93043": "success",
+    "93044": "success",
+    "93045": "success",
+    "93046": "success",
+    "93047": "success",
+    "93048": "success",
+    "93049": "success"
+   }
+  },
+  "MLP on 8 signals": {
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": null,
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 15.116595269000015
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 3505,
+     "alpha": null,
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 31.388333504000002
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 5234,
+     "alpha": null,
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 49.96375289100001
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 6999,
+     "alpha": null,
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 70.957630015
+    }
+   ],
+   "per_seed": {
+    "93000": "success",
+    "93001": "success",
+    "93002": "success",
+    "93003": "success",
+    "93004": "success",
+    "93005": "success",
+    "93006": "success",
+    "93007": "success",
+    "93008": "success",
+    "93009": "success",
+    "93010": "success",
+    "93011": "success",
+    "93012": "success",
+    "93013": "success",
+    "93014": "success",
+    "93015": "success",
+    "93016": "success",
+    "93017": "success",
+    "93018": "success",
+    "93019": "success",
+    "93020": "success",
+    "93021": "success",
+    "93022": "success",
+    "93023": "success",
+    "93024": "success",
+    "93025": "success",
+    "93026": "success",
+    "93027": "success",
+    "93028": "success",
+    "93029": "success",
+    "93030": "success",
+    "93031": "success",
+    "93032": "success",
+    "93033": "success",
+    "93034": "success",
+    "93035": "success",
+    "93036": "success",
+    "93037": "success",
+    "93038": "success",
+    "93039": "success",
+    "93040": "success",
+    "93041": "success",
+    "93042": "success",
+    "93043": "success",
+    "93044": "success",
+    "93045": "success",
+    "93046": "success",
+    "93047": "success",
+    "93048": "success",
+    "93049": "success"
+   }
+  },
+  "linear on 8 signals": {
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      3.1622776601683795,
+      1.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 12.579906494999989
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 4100,
+     "alpha": [
+      3.1622776601683795,
+      10.0
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 24.67439206199998
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 6942,
+     "alpha": [
+      31.622776601683793,
+      100.0
+     ],
+     "success": 0.0,
+     "lifted": 0.5,
+     "wall_s": 45.810522496999965
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 11015,
+     "alpha": [
+      100.0,
+      316.2277660168379
+     ],
+     "success": 0.0,
+     "lifted": 1.0,
+     "wall_s": 77.30491587699998
+    }
+   ],
+   "per_seed": {
+    "93000": "never lifted",
+    "93001": "still holding the cube",
+    "93002": "still holding the cube",
+    "93003": "never lifted",
+    "93004": "never lifted",
+    "93005": "still holding the cube",
+    "93006": "never lifted",
+    "93007": "never lifted",
+    "93008": "never lifted",
+    "93009": "still holding the cube",
+    "93010": "still holding the cube",
+    "93011": "still holding the cube",
+    "93012": "never lifted",
+    "93013": "still holding the cube",
+    "93014": "still holding the cube",
+    "93015": "still holding the cube",
+    "93016": "never lifted",
+    "93017": "never lifted",
+    "93018": "never lifted",
+    "93019": "never lifted",
+    "93020": "never lifted",
+    "93021": "still holding the cube",
+    "93022": "never lifted",
+    "93023": "still holding the cube",
+    "93024": "still holding the cube",
+    "93025": "never lifted",
+    "93026": "still holding the cube",
+    "93027": "still holding the cube",
+    "93028": "never lifted",
+    "93029": "still holding the cube",
+    "93030": "never lifted",
+    "93031": "still holding the cube",
+    "93032": "never lifted",
+    "93033": "still holding the cube",
+    "93034": "never lifted",
+    "93035": "still holding the cube",
+    "93036": "still holding the cube",
+    "93037": "never lifted",
+    "93038": "still holding the cube",
+    "93039": "still holding the cube",
+    "93040": "still holding the cube",
+    "93041": "never lifted",
+    "93042": "never lifted",
+    "93043": "never lifted",
+    "93044": "never lifted",
+    "93045": "still holding the cube",
+    "93046": "still holding the cube",
+    "93047": "still holding the cube",
+    "93048": "still holding the cube",
+    "93049": "still holding the cube"
+   }
+  },
+  "linear on 8 signals, C4 weights": {
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      10.0,
+      1.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 12.904661400999998
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 4105,
+     "alpha": [
+      3.1622776601683795,
+      100.0
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 25.248373705000006
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 6315,
+     "alpha": [
+      3.1622776601683795,
+      3.1622776601683795
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 38.044449241999985
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 9365,
+     "alpha": [
+      1.0,
+      0.31622776601683794
+     ],
+     "success": 0.0,
+     "lifted": 0.03333333333333333,
+     "wall_s": 66.790251716
+    }
+   ],
+   "per_seed": {
+    "93000": "still holding the cube",
+    "93001": "still holding the cube",
+    "93002": "still holding the cube",
+    "93003": "still holding the cube",
+    "93004": "still holding the cube",
+    "93005": "still holding the cube",
+    "93006": "still holding the cube",
+    "93007": "still holding the cube",
+    "93008": "still holding the cube",
+    "93009": "still holding the cube",
+    "93010": "still holding the cube",
+    "93011": "still holding the cube",
+    "93012": "still holding the cube",
+    "93013": "still holding the cube",
+    "93014": "still holding the cube",
+    "93015": "still holding the cube",
+    "93016": "still holding the cube",
+    "93017": "still holding the cube",
+    "93018": "still holding the cube",
+    "93019": "still holding the cube",
+    "93020": "still holding the cube",
+    "93021": "still holding the cube",
+    "93022": "still holding the cube",
+    "93023": "still holding the cube",
+    "93024": "still holding the cube",
+    "93025": "still holding the cube",
+    "93026": "still holding the cube",
+    "93027": "still holding the cube",
+    "93028": "still holding the cube",
+    "93029": "still holding the cube",
+    "93030": "still holding the cube",
+    "93031": "still holding the cube",
+    "93032": "still holding the cube",
+    "93033": "still holding the cube",
+    "93034": "still holding the cube",
+    "93035": "still holding the cube",
+    "93036": "still holding the cube",
+    "93037": "still holding the cube",
+    "93038": "still holding the cube",
+    "93039": "still holding the cube",
+    "93040": "still holding the cube",
+    "93041": "still holding the cube",
+    "93042": "still holding the cube",
+    "93043": "still holding the cube",
+    "93044": "still holding the cube",
+    "93045": "still holding the cube",
+    "93046": "still holding the cube",
+    "93047": "still holding the cube",
+    "93048": "still holding the cube",
+    "93049": "still holding the cube"
+   }
+  },
+  "linear on 8 signals, C6 weights": {
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      3.1622776601683795,
+      1.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 12.904730313000073
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 4268,
+     "alpha": [
+      1.0,
+      1.0
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 26.22272978600006
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 6438,
+     "alpha": [
+      3.1622776601683795,
+      1.0
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 38.150828818000036
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 8591,
+     "alpha": [
+      3.1622776601683795,
+      316.2277660168379
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 49.837052212
+    }
+   ],
+   "per_seed": {
+    "93000": "never lifted",
+    "93001": "never lifted",
+    "93002": "never lifted",
+    "93003": "never lifted",
+    "93004": "never lifted",
+    "93005": "never lifted",
+    "93006": "never lifted",
+    "93007": "never lifted",
+    "93008": "never lifted",
+    "93009": "never lifted",
+    "93010": "never lifted",
+    "93011": "never lifted",
+    "93012": "never lifted",
+    "93013": "never lifted",
+    "93014": "never lifted",
+    "93015": "never lifted",
+    "93016": "never lifted",
+    "93017": "dropped or put down outside the zone",
+    "93018": "never lifted",
+    "93019": "never lifted",
+    "93020": "never lifted",
+    "93021": "never lifted",
+    "93022": "never lifted",
+    "93023": "never lifted",
+    "93024": "dropped or put down outside the zone",
+    "93025": "never lifted",
+    "93026": "never lifted",
+    "93027": "never lifted",
+    "93028": "never lifted",
+    "93029": "never lifted",
+    "93030": "never lifted",
+    "93031": "never lifted",
+    "93032": "never lifted",
+    "93033": "never lifted",
+    "93034": "never lifted",
+    "93035": "never lifted",
+    "93036": "never lifted",
+    "93037": "never lifted",
+    "93038": "never lifted",
+    "93039": "never lifted",
+    "93040": "never lifted",
+    "93041": "never lifted",
+    "93042": "never lifted",
+    "93043": "never lifted",
+    "93044": "never lifted",
+    "93045": "never lifted",
+    "93046": "never lifted",
+    "93047": "never lifted",
+    "93048": "never lifted",
+    "93049": "never lifted"
+   }
+  },
+  "gated linear on 8 signals (G)": {
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      10.0,
+      0.31622776601683794
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 12.683379849000062
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 3989,
+     "alpha": [
+      3.1622776601683795,
+      1.0
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 25.484038779000002
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 7536,
+     "alpha": [
+      31.622776601683793,
+      316.2277660168379
+     ],
+     "success": 0.23333333333333334,
+     "lifted": 1.0,
+     "wall_s": 54.549817899000004
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 10600,
+     "alpha": [
+      1000.0,
+      316.2277660168379
+     ],
+     "success": 0.4,
+     "lifted": 0.8333333333333334,
+     "wall_s": 73.799373145
+    }
+   ],
+   "per_seed": {
+    "93000": "put down in zone, not finished",
+    "93001": "success",
+    "93002": "success",
+    "93003": "put down in zone, not finished",
+    "93004": "success",
+    "93005": "success",
+    "93006": "success",
+    "93007": "put down in zone, not finished",
+    "93008": "success",
+    "93009": "success",
+    "93010": "success",
+    "93011": "success",
+    "93012": "put down in zone, not finished",
+    "93013": "success",
+    "93014": "success",
+    "93015": "success",
+    "93016": "success",
+    "93017": "success",
+    "93018": "put down in zone, not finished",
+    "93019": "put down in zone, not finished",
+    "93020": "put down in zone, not finished",
+    "93021": "success",
+    "93022": "put down in zone, not finished",
+    "93023": "put down in zone, not finished",
+    "93024": "success",
+    "93025": "put down in zone, not finished",
+    "93026": "success",
+    "93027": "success",
+    "93028": "success",
+    "93029": "success",
+    "93030": "put down in zone, not finished",
+    "93031": "success",
+    "93032": "put down in zone, not finished",
+    "93033": "success",
+    "93034": "success",
+    "93035": "put down in zone, not finished",
+    "93036": "success",
+    "93037": "put down in zone, not finished",
+    "93038": "success",
+    "93039": "success",
+    "93040": "success",
+    "93041": "success",
+    "93042": "put down in zone, not finished",
+    "93043": "put down in zone, not finished",
+    "93044": "success",
+    "93045": "success",
+    "93046": "success",
+    "93047": "success",
+    "93048": "success",
+    "93049": "success"
+   }
+  }
+ },
+ "wall_min": 97.19808019473334
+}

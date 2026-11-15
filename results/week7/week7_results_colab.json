@@ -1,0 +1,638 @@
+{
+ "host": "colab",
+ "quick": false,
+ "gpu": "Tesla T4",
+ "gpu_dtype": "float32",
+ "gpu_check": {
+  "match_float32": {
+   "identical_counts": 0.5655263964055959,
+   "rate_corr": 0.9972186896211344,
+   "spikes_numba": 424149,
+   "spikes_torch": 424099
+  },
+  "speed_s_per_trial_s": {
+   "1": 11.546022640000047,
+   "8": 2.0109328537500915,
+   "32": 1.3479462799999453,
+   "64": 1.2293108695312327
+  },
+  "match_float64": {
+   "identical_counts": 1.0,
+   "rate_corr": 1.0,
+   "spikes_numba": 424149,
+   "spikes_torch": 424149
+  }
+ },
+ "w_scale_connectome": 0.7,
+ "signals": [
+  "cube_rel_x",
+  "cube_rel_y",
+  "cube_rel_z",
+  "grip_width",
+  "goal_rel_x",
+  "goal_rel_y",
+  "tcp_z",
+  "cube_z"
+ ],
+ "readout": "all descending neurons, ridge",
+ "readout_pool": 1332,
+ "dagger": {
+  "rounds": 4,
+  "episodes_per_round": 30
+ },
+ "table": [
+  {
+   "policy": "connectome",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 32.8,
+   "time to complete (s, median)": NaN,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "random network",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 123.8,
+   "time to complete (s, median)": NaN,
+   "lifted": 0.94,
+   "carried to zone": 0.32,
+   "stalled": 0.0
+  },
+  {
+   "policy": "MLP",
+   "success": "50/50",
+   "success rate": 1.0,
+   "95% CI": "93%-100%",
+   "placement error, successes (mm, median)": 3.4,
+   "placement error, all lifted (mm, median)": 3.4,
+   "time to complete (s, median)": 2.04,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "linear on 8 signals",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 202.0,
+   "time to complete (s, median)": NaN,
+   "lifted": 1.0,
+   "carried to zone": 0.72,
+   "stalled": 0.3
+  },
+  {
+   "policy": "expert",
+   "success": "50/50",
+   "success rate": 1.0,
+   "95% CI": "93%-100%",
+   "placement error, successes (mm, median)": 3.8,
+   "placement error, all lifted (mm, median)": 3.8,
+   "time to complete (s, median)": 2.02,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  }
+ ],
+ "verdict": "connectome is better at carrying the cube to the zone: 100% vs 32% (seeds only the connectome did: 34, only the random network: 0, McNemar p = 1.16e-10)",
+ "paired_milestones": {
+  "lifted": {
+   "a": 1.0,
+   "b": 0.94,
+   "only_a": 3,
+   "only_b": 0,
+   "p": 0.25
+  },
+  "zone": {
+   "a": 1.0,
+   "b": 0.32,
+   "only_a": 34,
+   "only_b": 0,
+   "p": 1.1641532182693481e-10
+  },
+  "success": {
+   "a": 0.0,
+   "b": 0.0,
+   "only_a": 0,
+   "only_b": 0,
+   "p": 1.0
+  }
+ },
+ "outcomes": {
+  "connectome": {
+   "dropped or put down outside the zone": 2,
+   "put down in zone, not finished": 15,
+   "still holding the cube": 33
+  },
+  "random network": {
+   "still holding the cube": 22,
+   "dropped or put down outside the zone": 19,
+   "never lifted": 3,
+   "put down in zone, not finished": 6
+  },
+  "MLP": {
+   "success": 50
+  },
+  "linear on 8 signals": {
+   "still holding the cube": 50
+  },
+  "expert": {
+   "success": 50
+  }
+ },
+ "networks": {
+  "connectome": {
+   "w_scale": 0.7,
+   "frac_firing": 0.044960729639326014,
+   "pool_mean_hz": 12.461609336609337,
+   "pool_active": 0.24924924924924924,
+   "encoder_overlap": 0.1435047844434306,
+   "timing": [
+    80,
+    80
+   ],
+   "timing_rows": [
+    {
+     "brain_ms": 40,
+     "window_ms": 20,
+     "lag": 0,
+     "dx": 0.03051819322630145,
+     "dy": 0.5465549083495135,
+     "dz": 0.19025734922683646,
+     "grip_bal_acc": 0.9016718314374252,
+     "score": 0.3926685284193755,
+     "wall_ms_per_step": 101.22162322429921,
+     "steps": 642
+    },
+    {
+     "brain_ms": 40,
+     "window_ms": 20,
+     "lag": 1,
+     "dx": 0.043745361733313115,
+     "dy": 0.5481339778921175,
+     "dz": 0.2558481624787682,
+     "grip_bal_acc": 0.8971404482540575,
+     "score": 0.41050209965307843,
+     "wall_ms_per_step": 101.22162322429921,
+     "steps": 642
+    },
+    {
+     "brain_ms": 40,
+     "window_ms": 40,
+     "lag": 0,
+     "dx": 0.109799963136053,
+     "dy": 0.6498070872490496,
+     "dz": 0.3083313238038684,
+     "grip_bal_acc": 0.9162918565003255,
+     "score": 0.4751305217974055,
+     "wall_ms_per_step": 101.22162322429921,
+     "steps": 642
+    },
+    {
+     "brain_ms": 40,
+     "window_ms": 40,
+     "lag": 1,
+     "dx": 0.04909311955154694,
+     "dy": 0.6905438969670248,
+     "dz": 0.41567497335426706,
+     "grip_bal_acc": 0.9169284660396865,
+     "score": 0.49729223048805293,
+     "wall_ms_per_step": 101.22162322429921,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 40,
+     "lag": 0,
+     "dx": 0.11262639908870642,
+     "dy": 0.6490183874056339,
+     "dz": 0.27941504660214755,
+     "grip_bal_acc": 0.9226255816438542,
+     "score": 0.4715777490960491,
+     "wall_ms_per_step": 190.11038630841145,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 40,
+     "lag": 1,
+     "dx": 0.11177638614632301,
+     "dy": 0.6736556269016134,
+     "dz": 0.38953733624430187,
+     "grip_bal_acc": 0.9154178920215595,
+     "score": 0.5014512833338394,
+     "wall_ms_per_step": 190.11038630841145,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 80,
+     "lag": 0,
+     "dx": 0.27358822413545014,
+     "dy": 0.7698842790616236,
+     "dz": 0.37783617038001704,
+     "grip_bal_acc": 0.9597536452919633,
+     "score": 0.5852039910402543,
+     "wall_ms_per_step": 190.11038630841145,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 80,
+     "lag": 1,
+     "dx": 0.28770540440363246,
+     "dy": 0.7652054896171888,
+     "dz": 0.49318832969185034,
+     "grip_bal_acc": 0.9370175949252743,
+     "score": 0.605033603390805,
+     "wall_ms_per_step": 190.11038630841145,
+     "steps": 642
+    }
+   ],
+   "sweep_r2": {
+    "cube_rel_x": 0.423,
+    "cube_rel_y": 0.505,
+    "cube_rel_z": 0.326,
+    "grip_width": 0.465,
+    "goal_rel_x": 0.628,
+    "goal_rel_y": 0.773,
+    "tcp_z": 0.48,
+    "cube_z": 0.408
+   },
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1892,
+     "alpha": [
+      1000.0,
+      316.2277660168379
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 236.89882027800013
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 5345,
+     "alpha": [
+      1000.0,
+      3162.2776601683795
+     ],
+     "success": 0.03333333333333333,
+     "lifted": 0.3333333333333333,
+     "wall_s": 662.9126110090001
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 8795,
+     "alpha": [
+      316.2277660168379,
+      1000.0
+     ],
+     "success": 0.0,
+     "lifted": 0.3,
+     "wall_s": 1094.700808554
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 13095,
+     "alpha": [
+      316.2277660168379,
+      316.2277660168379
+     ],
+     "success": 0.0,
+     "lifted": 0.8666666666666667,
+     "wall_s": 1608.8806233370005
+    }
+   ],
+   "alpha": [
+    316.2277660168379,
+    316.2277660168379
+   ],
+   "cut": {
+    "n": 10,
+    "success": 0,
+    "success_rate": 0.0,
+    "ci": [
+     0.0,
+     0.2775401687666166
+    ],
+    "place_mm_success": null,
+    "place_mm_lifted": null,
+    "time_s": null,
+    "lifted_rate": 0.0,
+    "zone_rate": 0.0,
+    "lift_time_s": null,
+    "stalled_rate": 1.0,
+    "outcomes": {
+     "never lifted": 10
+    },
+    "grip_switches": 0.0
+   },
+   "brain_s": 1736.64,
+   "wall_min": 48.07758366555,
+   "engine": "torch float32 on cuda",
+   "brain_s_per_sim_s": 1.2788479563737771,
+   "stats": {
+    "neurons": 176422,
+    "connections": 24287791,
+    "synapses": 120778304,
+    "exc_neurons": 108748,
+    "inh_neurons": 59117,
+    "exc_conn_frac": 0.590384526941952,
+    "exc_syn_frac": 0.6026982544812022,
+    "in_deg_mean": 137.66872045436511,
+    "in_deg_median": 83.0,
+    "in_deg_max": 11494,
+    "out_deg_median": 100.0,
+    "out_deg_max": 11209,
+    "self_loops": 115
+   }
+  },
+  "random network": {
+   "w_scale": 1.1326025657822454,
+   "frac_firing": 0.048055790603508494,
+   "pool_mean_hz": 1.3223450723450725,
+   "pool_active": 0.1524024024024024,
+   "encoder_overlap": 0.01008719145343996,
+   "timing": [
+    40,
+    40
+   ],
+   "timing_rows": [
+    {
+     "brain_ms": 40,
+     "window_ms": 20,
+     "lag": 0,
+     "dx": 0.11487315725852199,
+     "dy": 0.5227897069017673,
+     "dz": 0.1676135593054705,
+     "grip_bal_acc": 0.908350414314996,
+     "score": 0.4054943130239379,
+     "wall_ms_per_step": 104.40609234891046,
+     "steps": 642
+    },
+    {
+     "brain_ms": 40,
+     "window_ms": 20,
+     "lag": 1,
+     "dx": 0.07799008758070203,
+     "dy": 0.5373129562342276,
+     "dz": 0.257999157618224,
+     "grip_bal_acc": 0.9053005590629423,
+     "score": 0.42097582988975957,
+     "wall_ms_per_step": 104.40609234891046,
+     "steps": 642
+    },
+    {
+     "brain_ms": 40,
+     "window_ms": 40,
+     "lag": 0,
+     "dx": 0.25110995609036113,
+     "dy": 0.6533302658868833,
+     "dz": 0.2999778035983246,
+     "grip_bal_acc": 0.939630467937945,
+     "score": 0.5209197403628647,
+     "wall_ms_per_step": 104.40609234891046,
+     "steps": 642
+    },
+    {
+     "brain_ms": 40,
+     "window_ms": 40,
+     "lag": 1,
+     "dx": 0.18551807698025546,
+     "dy": 0.6664431060187063,
+     "dz": 0.3961090716802803,
+     "grip_bal_acc": 0.9290130581847016,
+     "score": 0.5265240927621613,
+     "wall_ms_per_step": 104.40609234891046,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 40,
+     "lag": 0,
+     "dx": 0.24424724400715836,
+     "dy": 0.6383720113942996,
+     "dz": 0.22054642664553226,
+     "grip_bal_acc": 0.93924189584325,
+     "score": 0.49541236843337255,
+     "wall_ms_per_step": 191.76319048130887,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 40,
+     "lag": 1,
+     "dx": 0.2560797220438942,
+     "dy": 0.6408578212630608,
+     "dz": 0.3285306926023962,
+     "grip_bal_acc": 0.9278035952665336,
+     "score": 0.5202688566106046,
+     "wall_ms_per_step": 191.76319048130887,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 80,
+     "lag": 0,
+     "dx": 0.33110673031213833,
+     "dy": 0.6958892010815259,
+     "dz": 0.3447571710432372,
+     "grip_bal_acc": 0.9455756209867788,
+     "score": 0.5657260861026148,
+     "wall_ms_per_step": 191.76319048130887,
+     "steps": 642
+    },
+    {
+     "brain_ms": 80,
+     "window_ms": 80,
+     "lag": 1,
+     "dx": 0.2878832729223172,
+     "dy": 0.7013986974821187,
+     "dz": 0.49116101970187376,
+     "grip_bal_acc": 0.9386787244933805,
+     "score": 0.5894501097732676,
+     "wall_ms_per_step": 191.76319048130887,
+     "steps": 642
+    }
+   ],
+   "sweep_r2": {
+    "cube_rel_x": 0.568,
+    "cube_rel_y": 0.376,
+    "cube_rel_z": 0.38,
+    "grip_width": 0.348,
+    "goal_rel_x": 0.366,
+    "goal_rel_y": 0.273,
+    "tcp_z": 0.333,
+    "cube_z": 0.402
+   },
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1892,
+     "alpha": [
+      1000.0,
+      1000.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 117.56366847999925
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 5132,
+     "alpha": [
+      3162.2776601683795,
+      1000.0
+     ],
+     "success": 0.03333333333333333,
+     "lifted": 0.2,
+     "wall_s": 313.85181085299973
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 8132,
+     "alpha": [
+      3162.2776601683795,
+      1000.0
+     ],
+     "success": 0.0,
+     "lifted": 0.0,
+     "wall_s": 483.9704039439994
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 12482,
+     "alpha": [
+      3162.2776601683795,
+      3162.2776601683795
+     ],
+     "success": 0.0,
+     "lifted": 0.9,
+     "wall_s": 738.5668429509997
+    }
+   ],
+   "alpha": [
+    3162.2776601683795,
+    3162.2776601683795
+   ],
+   "cut": {
+    "n": 10,
+    "success": 0,
+    "success_rate": 0.0,
+    "ci": [
+     0.0,
+     0.2775401687666166
+    ],
+    "place_mm_success": null,
+    "place_mm_lifted": null,
+    "time_s": null,
+    "lifted_rate": 0.0,
+    "zone_rate": 0.0,
+    "lift_time_s": null,
+    "stalled_rate": 0.8,
+    "outcomes": {
+     "never lifted": 10
+    },
+    "grip_switches": 0.0
+   },
+   "brain_s": 857.28,
+   "wall_min": 25.401258379616667,
+   "engine": "torch float32 on cuda",
+   "brain_s_per_sim_s": 1.0607414570723677,
+   "stats": {
+    "neurons": 176422,
+    "connections": 24287791,
+    "synapses": 120778304,
+    "exc_neurons": 108748,
+    "inh_neurons": 59117,
+    "exc_conn_frac": 0.590384526941952,
+    "exc_syn_frac": 0.6026982544812022,
+    "in_deg_mean": 137.66872045436511,
+    "in_deg_median": 83.0,
+    "in_deg_max": 11494,
+    "out_deg_median": 100.0,
+    "out_deg_max": 11209,
+    "self_loops": 323
+   }
+  }
+ },
+ "offline": {
+  "connectome": {
+   "action_all": {
+    "dx": 0.27,
+    "dy": 0.814,
+    "dz": 0.393,
+    "grip_bal_acc": 0.963
+   },
+   "action_k": {
+    "dx": 0.261,
+    "dy": 0.819,
+    "dz": 0.378,
+    "grip_bal_acc": 0.97
+   },
+   "signals": {
+    "cube_rel_x": 0.579,
+    "cube_rel_y": 0.794,
+    "cube_rel_z": 0.927,
+    "grip_width": 0.898,
+    "goal_rel_x": 0.948,
+    "goal_rel_y": 0.975,
+    "tcp_z": 0.937,
+    "cube_z": 0.965
+   }
+  },
+  "random network": {
+   "action_all": {
+    "dx": 0.244,
+    "dy": 0.692,
+    "dz": 0.312,
+    "grip_bal_acc": 0.951
+   },
+   "action_k": {
+    "dx": 0.119,
+    "dy": 0.589,
+    "dz": 0.252,
+    "grip_bal_acc": 0.945
+   },
+   "signals": {
+    "cube_rel_x": 0.539,
+    "cube_rel_y": 0.621,
+    "cube_rel_z": 0.864,
+    "grip_width": 0.817,
+    "goal_rel_x": 0.81,
+    "goal_rel_y": 0.731,
+    "tcp_z": 0.841,
+    "cube_z": 0.916
+   }
+  }
+ },
+ "round0_identical": true,
+ "video": "/content/drive/MyDrive/arm_simulation/brain/data/week7/week7_pick_place_colab.mp4",
+ "wall_min": 88.7813357142
+}

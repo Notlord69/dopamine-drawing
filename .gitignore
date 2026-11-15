@@ -1,0 +1,22 @@
+# data and large outputs (fetched or regenerated, never committed)
+data/
+outputs/
+mujoco_menagerie/
+*.npz
+*.pkl
+*.feather
+*.parquet
+*.npy
+weights_*/
+# python / tooling
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.env
+kaggle.json
+# Windows download markers
+*:Zone.Identifier

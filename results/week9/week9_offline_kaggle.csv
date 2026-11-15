@@ -1,0 +1,8 @@
+candidate,labels,select,weight,dx R2,dy R2,dz R2,grip bal. acc.,trap: dz up,trap: mean dz (mm/step),trap: grip open,press: dz down,release: grip open,end score
+C0 week 8b (round-0 selection),B,round0,False,0.343,0.719,0.428,0.879,0.435,1.9,0.987,0.756,0.533,0.435
+C1 reselect on all data,B,all,False,0.342,0.72,0.434,0.879,0.453,2.2,0.987,0.767,0.526,0.453
+C2 weight the release region,B,round0,True,0.341,0.71,0.368,0.875,0.903,11.7,1.0,0.683,0.912,0.683
+C3 B2 graded retreat,B2,round0,False,0.344,0.719,0.434,0.879,0.471,2.6,0.987,0.758,0.526,0.471
+C4 reselect + weight,B,all,True,0.339,0.71,0.378,0.875,0.926,11.9,1.0,0.701,0.927,0.701
+C5 B2 + reselect + weight,B2,all,True,0.338,0.71,0.384,0.875,0.928,12.6,1.0,0.7,0.92,0.7
+G gated by decoded grip (not linear),B,all,False,0.479,0.75,0.553,0.879,0.844,8.2,0.987,0.897,0.526,0.844

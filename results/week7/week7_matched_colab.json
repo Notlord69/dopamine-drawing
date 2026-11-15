@@ -1,0 +1,1251 @@
+{
+ "timing": [
+  80,
+  80
+ ],
+ "table": [
+  {
+   "policy": "connectome (80 ms)",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": null,
+   "placement error, all lifted (mm, median)": 32.8,
+   "time to complete (s, median)": null,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "random network, 80 ms",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": null,
+   "placement error, all lifted (mm, median)": 19.3,
+   "time to complete (s, median)": null,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "random network, 40 ms (main run)",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": null,
+   "placement error, all lifted (mm, median)": 123.8,
+   "time to complete (s, median)": null,
+   "lifted": 0.94,
+   "carried to zone": 0.32,
+   "stalled": 0.0
+  }
+ ],
+ "verdict": "no significant difference between the connectome and the random network on any milestone at n = 50",
+ "paired_milestones": {
+  "lifted": {
+   "a": 1.0,
+   "b": 1.0,
+   "only_a": 0,
+   "only_b": 0,
+   "p": 1.0
+  },
+  "zone": {
+   "a": 1.0,
+   "b": 1.0,
+   "only_a": 0,
+   "only_b": 0,
+   "p": 1.0
+  },
+  "success": {
+   "a": 0.0,
+   "b": 0.0,
+   "only_a": 0,
+   "only_b": 0,
+   "p": 1.0
+  }
+ },
+ "endings": {
+  "connectome (80 ms)": [
+   {
+    "seed": 92000,
+    "outcome": "dropped or put down outside the zone",
+    "cube_to_target_mm": 75.51197580545771,
+    "cube_height_mm": 33.25107812660907,
+    "gripper_above_cube_mm": 19.235252491838523,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92001,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 30.27083511519272,
+    "cube_height_mm": 24.884339294361528,
+    "gripper_above_cube_mm": 62.36449563047772,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": true,
+    "at_rest": true
+   },
+   {
+    "seed": 92002,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 20.524123202200883,
+    "cube_height_mm": 88.48858537912359,
+    "gripper_above_cube_mm": 16.852673715208322,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92003,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 18.169391949729057,
+    "cube_height_mm": 104.40363191998227,
+    "gripper_above_cube_mm": 12.481475939530057,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92004,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 60.093580105940376,
+    "cube_height_mm": 88.42492031576339,
+    "gripper_above_cube_mm": 20.182134010920727,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92005,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 31.126226014478505,
+    "cube_height_mm": 91.79694196730266,
+    "gripper_above_cube_mm": 20.395682084481933,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92006,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 33.04011782314253,
+    "cube_height_mm": 86.1104940503551,
+    "gripper_above_cube_mm": 27.84866526615405,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92007,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 46.808306542369095,
+    "cube_height_mm": 90.45499514911968,
+    "gripper_above_cube_mm": 24.450394326582177,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92008,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 26.10807226796677,
+    "cube_height_mm": 24.865186348922382,
+    "gripper_above_cube_mm": 40.54578534961758,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92009,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 61.839612803817275,
+    "cube_height_mm": 89.25886508592023,
+    "gripper_above_cube_mm": 20.391363291880417,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92010,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 36.218470764072,
+    "cube_height_mm": 88.5413757398191,
+    "gripper_above_cube_mm": 21.988450652696194,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92011,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 34.880785745775114,
+    "cube_height_mm": 119.65001102919805,
+    "gripper_above_cube_mm": 14.084156852990942,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92012,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 17.953771368449193,
+    "cube_height_mm": 89.36392547011644,
+    "gripper_above_cube_mm": 27.881491520617168,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92013,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 30.637934849991932,
+    "cube_height_mm": 86.70715511657339,
+    "gripper_above_cube_mm": 24.52730273491739,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92014,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 37.241886292230255,
+    "cube_height_mm": 130.09620924828505,
+    "gripper_above_cube_mm": 1.4453410467022698,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92015,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 37.57205269084548,
+    "cube_height_mm": 24.892244579783657,
+    "gripper_above_cube_mm": 21.840571504584673,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92016,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 14.315866468704671,
+    "cube_height_mm": 115.77977153962456,
+    "gripper_above_cube_mm": 12.571726543527381,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92017,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 35.88363722713714,
+    "cube_height_mm": 108.20628178427516,
+    "gripper_above_cube_mm": 17.41272072154143,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92018,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 8.156678393014458,
+    "cube_height_mm": 97.99939616689606,
+    "gripper_above_cube_mm": 22.4602741063972,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92019,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 14.532438978709708,
+    "cube_height_mm": 100.03584706568408,
+    "gripper_above_cube_mm": 15.091480758403552,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92020,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 27.035509656681906,
+    "cube_height_mm": 93.61160824581087,
+    "gripper_above_cube_mm": 14.16210890658233,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92021,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 38.86431762461735,
+    "cube_height_mm": 94.84853903598842,
+    "gripper_above_cube_mm": 21.285965289121147,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92022,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 24.37214337762808,
+    "cube_height_mm": 24.88863844986776,
+    "gripper_above_cube_mm": 53.80208893431435,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92023,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 34.17584327753628,
+    "cube_height_mm": 24.891915052210543,
+    "gripper_above_cube_mm": 24.78339079087466,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92024,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 32.10787666833741,
+    "cube_height_mm": 24.892244579765407,
+    "gripper_above_cube_mm": 37.83151690280563,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92025,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 39.60927688693418,
+    "cube_height_mm": 78.4076387052795,
+    "gripper_above_cube_mm": 18.99108434677009,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92026,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 12.443608665634702,
+    "cube_height_mm": 98.81216295482979,
+    "gripper_above_cube_mm": 16.270449112654656,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92027,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 32.822744637088896,
+    "cube_height_mm": 86.5734324263087,
+    "gripper_above_cube_mm": 24.689504038851922,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92028,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 32.703702108143894,
+    "cube_height_mm": 24.59514295808734,
+    "gripper_above_cube_mm": 28.949422658211688,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92029,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 33.37413216389877,
+    "cube_height_mm": 49.366513735866135,
+    "gripper_above_cube_mm": -3.039049551184572,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92030,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 34.238405416175986,
+    "cube_height_mm": 80.149829538493,
+    "gripper_above_cube_mm": 22.29494549973679,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92031,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 35.89462453343136,
+    "cube_height_mm": 106.25075990429572,
+    "gripper_above_cube_mm": 15.227823711116944,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92032,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 8.308474854052388,
+    "cube_height_mm": 24.892244579783853,
+    "gripper_above_cube_mm": 28.560928621690724,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92033,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 43.25329561838139,
+    "cube_height_mm": 82.83607216568544,
+    "gripper_above_cube_mm": 27.03752358646487,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92034,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 34.4286498882975,
+    "cube_height_mm": 24.892244579783505,
+    "gripper_above_cube_mm": 28.988552857618384,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92035,
+    "outcome": "dropped or put down outside the zone",
+    "cube_to_target_mm": 104.94306563712286,
+    "cube_height_mm": 24.892124412396615,
+    "gripper_above_cube_mm": 12.457648164714858,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92036,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 38.97804697541918,
+    "cube_height_mm": 92.30882046258641,
+    "gripper_above_cube_mm": 22.00698435615224,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92037,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 14.098202142251159,
+    "cube_height_mm": 24.892244579783828,
+    "gripper_above_cube_mm": 17.268162574597884,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92038,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 16.607204492751464,
+    "cube_height_mm": 103.90603071493875,
+    "gripper_above_cube_mm": 16.9469583821172,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92039,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 50.21276329444294,
+    "cube_height_mm": 95.79553191717446,
+    "gripper_above_cube_mm": 14.628803828998269,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92040,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 43.68910223307458,
+    "cube_height_mm": 24.87454751079972,
+    "gripper_above_cube_mm": 63.5394524687284,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": true,
+    "at_rest": true
+   },
+   {
+    "seed": 92041,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 23.094105698033292,
+    "cube_height_mm": 103.54587131586756,
+    "gripper_above_cube_mm": 8.194810168430266,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92042,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 5.486023456834322,
+    "cube_height_mm": 106.67912948150477,
+    "gripper_above_cube_mm": 20.646554032551265,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92043,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 55.22310540917505,
+    "cube_height_mm": 92.01894055295574,
+    "gripper_above_cube_mm": 11.678541105369284,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92044,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 13.652594282151153,
+    "cube_height_mm": 105.24617009130151,
+    "gripper_above_cube_mm": 11.455723516315658,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92045,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 18.975467791825235,
+    "cube_height_mm": 24.892244579561734,
+    "gripper_above_cube_mm": 13.990447061978834,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92046,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 37.48596973096417,
+    "cube_height_mm": 24.89224457978086,
+    "gripper_above_cube_mm": 16.909486181735318,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92047,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 23.721668307808446,
+    "cube_height_mm": 24.89159919933633,
+    "gripper_above_cube_mm": 28.82044568311967,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   },
+   {
+    "seed": 92048,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 32.08774277098721,
+    "cube_height_mm": 99.75698732193115,
+    "gripper_above_cube_mm": 16.20060539711686,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92049,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 18.528593587418957,
+    "cube_height_mm": 24.892244579783842,
+    "gripper_above_cube_mm": 28.51562162077933,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": true
+   }
+  ],
+  "random network, 80 ms": [
+   {
+    "seed": 92000,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 7.940598429757702,
+    "cube_height_mm": 122.22937841546143,
+    "gripper_above_cube_mm": 11.999131895392049,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92001,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 26.424687123281405,
+    "cube_height_mm": 100.48524434729151,
+    "gripper_above_cube_mm": 26.373745370939243,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92002,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 20.83008775951044,
+    "cube_height_mm": 111.69216668721151,
+    "gripper_above_cube_mm": 13.87759855644706,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92003,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 11.571030217444276,
+    "cube_height_mm": 84.07776151227948,
+    "gripper_above_cube_mm": 24.09487104061972,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92004,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 13.283223658877574,
+    "cube_height_mm": 93.56691055183937,
+    "gripper_above_cube_mm": 19.312988796297656,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92005,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 19.20815878938626,
+    "cube_height_mm": 145.6702108354912,
+    "gripper_above_cube_mm": 0.738425316156921,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92006,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 33.794047869807606,
+    "cube_height_mm": 98.29567576959953,
+    "gripper_above_cube_mm": 22.69944923346924,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92007,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 1.0558061448385059,
+    "cube_height_mm": 114.8947262377805,
+    "gripper_above_cube_mm": 13.465896399326342,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92008,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 10.172835817873718,
+    "cube_height_mm": 90.21777338847834,
+    "gripper_above_cube_mm": 26.65965622025976,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92009,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 28.05925944137606,
+    "cube_height_mm": 103.2823614349598,
+    "gripper_above_cube_mm": 19.54553382037863,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92010,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 20.37153187254225,
+    "cube_height_mm": 107.24158433764357,
+    "gripper_above_cube_mm": 18.861382035237227,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92011,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 10.181510350106612,
+    "cube_height_mm": 94.27489893046511,
+    "gripper_above_cube_mm": 24.954670941569876,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92012,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 14.550846022124235,
+    "cube_height_mm": 110.23116464631397,
+    "gripper_above_cube_mm": 22.5913029832219,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92013,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 25.747773603056057,
+    "cube_height_mm": 103.54361736610893,
+    "gripper_above_cube_mm": 19.839093501233446,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92014,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 13.31080710092216,
+    "cube_height_mm": 97.58054678207685,
+    "gripper_above_cube_mm": 25.84929512206366,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92015,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 30.10009548210887,
+    "cube_height_mm": 42.381397483046996,
+    "gripper_above_cube_mm": 6.353484749048628,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92016,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 23.7535091559435,
+    "cube_height_mm": 98.26852349468537,
+    "gripper_above_cube_mm": 21.84336314148408,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92017,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 23.494518338670957,
+    "cube_height_mm": 112.86699901138016,
+    "gripper_above_cube_mm": 15.573352894923273,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92018,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 12.702407161754397,
+    "cube_height_mm": 109.99095872196202,
+    "gripper_above_cube_mm": 16.81693560534889,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92019,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 9.629371239183143,
+    "cube_height_mm": 94.22580881948625,
+    "gripper_above_cube_mm": 20.85210943642772,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92020,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 4.914593948427294,
+    "cube_height_mm": 117.60952819799918,
+    "gripper_above_cube_mm": 15.534169355817765,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92021,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 26.77543918670095,
+    "cube_height_mm": 76.6110624377391,
+    "gripper_above_cube_mm": 24.58735919352492,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92022,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 6.356052911464593,
+    "cube_height_mm": 118.23946917770729,
+    "gripper_above_cube_mm": 15.373166457911411,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92023,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 11.721587063378022,
+    "cube_height_mm": 97.69003044190107,
+    "gripper_above_cube_mm": 18.369226832316453,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92024,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 19.366399260037213,
+    "cube_height_mm": 84.12568178379516,
+    "gripper_above_cube_mm": 22.936712065936547,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92025,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 18.562710596118144,
+    "cube_height_mm": 103.27797417645807,
+    "gripper_above_cube_mm": 10.396477485874772,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92026,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 21.20080074312766,
+    "cube_height_mm": 91.04812679237432,
+    "gripper_above_cube_mm": 24.416133542320654,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92027,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 45.74470684728103,
+    "cube_height_mm": 31.99330176516304,
+    "gripper_above_cube_mm": -5.5827483540841145,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92028,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 33.19752311260061,
+    "cube_height_mm": 24.85225362764481,
+    "gripper_above_cube_mm": 17.015736087080672,
+    "grip_command_open": true,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92029,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 23.715999239524272,
+    "cube_height_mm": 113.02449974467312,
+    "gripper_above_cube_mm": 12.615885122484224,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92030,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 15.652868713025711,
+    "cube_height_mm": 121.20069654290421,
+    "gripper_above_cube_mm": 17.85460223444274,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92031,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 22.313850478237676,
+    "cube_height_mm": 106.48782654550666,
+    "gripper_above_cube_mm": 16.994229134992406,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92032,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 21.996802627092123,
+    "cube_height_mm": 108.20957716848596,
+    "gripper_above_cube_mm": 18.325441928738293,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92033,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 8.324304271296409,
+    "cube_height_mm": 100.98761975647214,
+    "gripper_above_cube_mm": 35.956490150546195,
+    "grip_command_open": false,
+    "released": true,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92034,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 5.903119611286209,
+    "cube_height_mm": 89.81474288197776,
+    "gripper_above_cube_mm": 28.109441065460665,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92035,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 24.152299595949025,
+    "cube_height_mm": 90.75324635582643,
+    "gripper_above_cube_mm": 22.666143997713604,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92036,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 15.197842262416666,
+    "cube_height_mm": 109.87335290026047,
+    "gripper_above_cube_mm": 10.68002383755412,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92037,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 23.931707511939866,
+    "cube_height_mm": 103.30549262483035,
+    "gripper_above_cube_mm": 16.581270530434566,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92038,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 12.720691386813343,
+    "cube_height_mm": 116.15134206293793,
+    "gripper_above_cube_mm": 21.003296486438394,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92039,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 16.976593288508045,
+    "cube_height_mm": 112.47002726417195,
+    "gripper_above_cube_mm": 17.496198953444413,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92040,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 22.305863705099927,
+    "cube_height_mm": 98.58639488583668,
+    "gripper_above_cube_mm": 20.555835730662942,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92041,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 11.172422234468515,
+    "cube_height_mm": 96.80375907817758,
+    "gripper_above_cube_mm": 26.78727869719341,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92042,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 23.531128380445352,
+    "cube_height_mm": 135.17020144184247,
+    "gripper_above_cube_mm": 8.105271381401685,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92043,
+    "outcome": "put down in zone, not finished",
+    "cube_to_target_mm": 33.318104168498074,
+    "cube_height_mm": 32.524531573282815,
+    "gripper_above_cube_mm": 69.50078956698,
+    "grip_command_open": true,
+    "released": true,
+    "gripper_clear": true,
+    "at_rest": false
+   },
+   {
+    "seed": 92044,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 12.270673051355494,
+    "cube_height_mm": 163.09780029506763,
+    "gripper_above_cube_mm": -0.2553310192368041,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92045,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 24.70028955480286,
+    "cube_height_mm": 94.44818344006431,
+    "gripper_above_cube_mm": 18.809552015629006,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92046,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 24.576730573042823,
+    "cube_height_mm": 89.62170205018886,
+    "gripper_above_cube_mm": 20.49811825509558,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92047,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 22.66339194952286,
+    "cube_height_mm": 91.41842579061569,
+    "gripper_above_cube_mm": 28.92384488104889,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92048,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 14.003100064952575,
+    "cube_height_mm": 104.48214244149372,
+    "gripper_above_cube_mm": 18.76816310235742,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   },
+   {
+    "seed": 92049,
+    "outcome": "still holding the cube",
+    "cube_to_target_mm": 14.374236121250973,
+    "cube_height_mm": 116.16797835848257,
+    "gripper_above_cube_mm": 9.9132857317797,
+    "grip_command_open": false,
+    "released": false,
+    "gripper_clear": false,
+    "at_rest": false
+   }
+  ]
+ },
+ "random_matched": {
+  "wall_min": 40.256088017066666,
+  "dagger_log": [
+   {
+    "round": 0,
+    "beta": 1.0,
+    "episodes": 30,
+    "rows": 1892,
+    "alpha": [
+     1000.0,
+     1000.0
+    ],
+    "success": 1.0,
+    "lifted": 1.0,
+    "wall_s": 219.66210279800003
+   },
+   {
+    "round": 1,
+    "beta": 0.0,
+    "episodes": 30,
+    "rows": 5076,
+    "alpha": [
+     3162.2776601683795,
+     1000.0
+    ],
+    "success": 0.1,
+    "lifted": 0.23333333333333334,
+    "wall_s": 589.8620703069998
+   },
+   {
+    "round": 2,
+    "beta": 0.0,
+    "episodes": 30,
+    "rows": 9126,
+    "alpha": [
+     3162.2776601683795,
+     3162.2776601683795
+    ],
+    "success": 0.0,
+    "lifted": 0.7,
+    "wall_s": 1033.5988746579999
+   },
+   {
+    "round": 3,
+    "beta": 0.0,
+    "episodes": 30,
+    "rows": 13626,
+    "alpha": [
+     3162.2776601683795,
+     1000.0
+    ],
+    "success": 0.0,
+    "lifted": 1.0,
+    "wall_s": 1517.667522199
+   }
+  ],
+  "cut": {
+   "n": 10,
+   "success": 0,
+   "success_rate": 0.0,
+   "ci": [
+    0.0,
+    0.2775401687666166
+   ],
+   "place_mm_success": null,
+   "place_mm_lifted": null,
+   "time_s": null,
+   "lifted_rate": 0.0,
+   "zone_rate": 0.0,
+   "lift_time_s": null,
+   "stalled_rate": 0.8,
+   "outcomes": {
+    "never lifted": 10
+   },
+   "grip_switches": 0.0
+  }
+ }
+}

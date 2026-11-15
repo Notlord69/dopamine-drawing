@@ -1,0 +1,5 @@
+# The torch engine (sim/batch7.TorchBatchLIF). The final runs used Kaggle's preinstalled torch on a
+# Tesla T4; the laptop environment had the CPU build below. Install the CUDA build that matches
+# your machine from https://pytorch.org instead if you have a GPU.
+#   pip install -r requirements-gpu.txt --index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1

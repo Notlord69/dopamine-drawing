@@ -1,0 +1,7 @@
+policy,success,success rate,95% CI,"placement error, successes (mm, median)","placement error, all lifted (mm, median)","time to complete (s, median)",lifted,carried to zone,stalled
+connectome,0/50,0.0,0%-7%,,29.1,,1.0,0.88,0.0
+random network,0/50,0.0,0%-7%,,36.1,,0.98,0.96,0.0
+MLP,50/50,1.0,93%-100%,2.7,2.7,1.92,1.0,1.0,0.0
+linear on 8 signals,0/50,0.0,0%-7%,,19.9,,0.48,0.32,0.84
+expert,50/50,1.0,93%-100%,2.7,2.7,1.92,1.0,1.0,0.0
+"connectome, week 7",0/50,0.0,0%-7%,,32.8,,1.0,1.0,0.0

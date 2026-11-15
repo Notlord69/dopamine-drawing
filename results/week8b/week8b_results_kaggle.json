@@ -1,0 +1,228 @@
+{
+ "host": "kaggle",
+ "quick": false,
+ "gpu": "Tesla T4",
+ "n_active": 8559,
+ "n_record": 9867,
+ "counts": {
+  "rows": 2468,
+  "episodes": 40,
+  "near_target": 212,
+  "lowering": 199,
+  "retreat": 221
+ },
+ "readouts": [
+  {
+   "readout": "JO input spikes (ceiling)",
+   "neurons": 335,
+   "dx R2": 0.354,
+   "dy R2": 0.836,
+   "dz R2": 0.29,
+   "grip bal. acc.": 0.962,
+   "motion gain near target": 0.84,
+   "dz right sign, lowering": 0.16,
+   "dz right sign, retreat": 0.51,
+   "signals R2 (median)": 0.988,
+   "signals R2 (min)": 0.944,
+   "weakest signal": "cube_rel_x",
+   "score": 0.43
+  },
+  {
+   "readout": "all DNs (week 8)",
+   "neurons": 1332,
+   "dx R2": 0.277,
+   "dy R2": 0.811,
+   "dz R2": 0.379,
+   "grip bal. acc.": 0.966,
+   "motion gain near target": 0.84,
+   "dz right sign, lowering": 0.76,
+   "dz right sign, retreat": 0.7,
+   "signals R2 (median)": 0.938,
+   "signals R2 (min)": 0.641,
+   "weakest signal": "cube_rel_x",
+   "score": 0.585
+  },
+  {
+   "readout": "1,332 random active non-DNs",
+   "neurons": 1332,
+   "dx R2": 0.208,
+   "dy R2": 0.825,
+   "dz R2": 0.351,
+   "grip bal. acc.": 0.964,
+   "motion gain near target": 0.83,
+   "dz right sign, lowering": 0.62,
+   "dz right sign, retreat": 0.72,
+   "signals R2 (median)": 0.927,
+   "signals R2 (min)": 0.578,
+   "weakest signal": "cube_rel_x",
+   "score": 0.545
+  },
+  {
+   "readout": "active, 3,000 most informative",
+   "neurons": 3000,
+   "dx R2": 0.52,
+   "dy R2": 0.883,
+   "dz R2": 0.544,
+   "grip bal. acc.": 0.974,
+   "motion gain near target": 0.79,
+   "dz right sign, lowering": 0.81,
+   "dz right sign, retreat": 0.8,
+   "signals R2 (median)": 0.973,
+   "signals R2 (min)": 0.854,
+   "weakest signal": "cube_rel_x",
+   "score": 0.711
+  },
+  {
+   "readout": "all active + DNs",
+   "neurons": 9532,
+   "dx R2": 0.411,
+   "dy R2": 0.863,
+   "dz R2": 0.442,
+   "grip bal. acc.": 0.976,
+   "motion gain near target": 0.79,
+   "dz right sign, lowering": 0.79,
+   "dz right sign, retreat": 0.76,
+   "signals R2 (median)": 0.964,
+   "signals R2 (min)": 0.818,
+   "weakest signal": "cube_rel_x",
+   "score": 0.653
+  },
+  {
+   "readout": "8 signals, noise-free (no brain)",
+   "neurons": 8,
+   "dx R2": 0.398,
+   "dy R2": 0.846,
+   "dz R2": 0.297,
+   "grip bal. acc.": 0.962,
+   "motion gain near target": 0.87,
+   "dz right sign, lowering": 0.14,
+   "dz right sign, retreat": 0.51,
+   "signals R2 (median)": 1.0,
+   "signals R2 (min)": 1.0,
+   "weakest signal": "cube_rel_x",
+   "score": 0.438
+  }
+ ],
+ "decision": "closed loop",
+ "why": "the wider readout carries clearly more (0.71 vs 0.59, margin 0.1): run the closed loop with it",
+ "closed_loop": true,
+ "passed": false,
+ "k_wide": 3000,
+ "table": [
+  {
+   "policy": "connectome, wide readout",
+   "success": "25/50",
+   "success rate": 0.5,
+   "95% CI": "37%-63%",
+   "placement error, successes (mm, median)": 10.3,
+   "placement error, all lifted (mm, median)": 12.1,
+   "time to complete (s, median)": 3.24,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "connectome, DN readout (week 8)",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 29.1,
+   "time to complete (s, median)": NaN,
+   "lifted": 1.0,
+   "carried to zone": 0.88,
+   "stalled": 0.0
+  }
+ ],
+ "outcomes": {
+  "connectome, wide readout": {
+   "put down in zone, not finished": 25,
+   "success": 25
+  },
+  "connectome, DN readout (week 8)": {
+   "dropped or put down outside the zone": 7,
+   "put down in zone, not finished": 17,
+   "still holding the cube": 26
+  }
+ },
+ "networks": {
+  "connectome, wide readout": {
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      1000.0,
+      1000.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 228.24609049100013
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 5591,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.36666666666666664,
+     "lifted": 0.7666666666666667,
+     "wall_s": 737.526627278
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 9789,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.13333333333333333,
+     "lifted": 0.9,
+     "wall_s": 1297.465410943
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 14273,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.03333333333333333,
+     "lifted": 1.0,
+     "wall_s": 1911.4136007140003
+    }
+   ],
+   "cut": {
+    "n": 10,
+    "success": 0,
+    "success_rate": 0.0,
+    "ci": [
+     0.0,
+     0.2775401687666166
+    ],
+    "place_mm_success": null,
+    "place_mm_lifted": null,
+    "time_s": null,
+    "lifted_rate": 0.0,
+    "zone_rate": 0.0,
+    "lift_time_s": null,
+    "stalled_rate": 1.0,
+    "outcomes": {
+     "never lifted": 10
+    },
+    "grip_switches": 0.0
+   },
+   "wall_min": 45.16635025588333
+  }
+ },
+ "wall_min": 61.55494046223334
+}

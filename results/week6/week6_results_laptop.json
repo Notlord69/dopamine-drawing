@@ -1,0 +1,156 @@
+{
+ "host": "laptop",
+ "quick": false,
+ "w_scale": 0.7,
+ "encoder": "wiring",
+ "readout": "DN candidates (68), 40 ms window, ridge",
+ "brain_ms_per_step": 40,
+ "dagger": {
+  "rounds": 4,
+  "episodes_per_round": 30,
+  "betas": [
+   1.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "log": [
+   {
+    "round": 0,
+    "beta": 1.0,
+    "episodes": 30,
+    "rows": 672,
+    "alpha": 31.622776601683793,
+    "success": 0.8666666666666667,
+    "travel": 1.0,
+    "knocked": 0.13333333333333333,
+    "wall_s": 141.4483935579999
+   },
+   {
+    "round": 1,
+    "beta": 0.0,
+    "episodes": 30,
+    "rows": 1390,
+    "alpha": 100.0,
+    "success": 0.9666666666666667,
+    "travel": 1.0,
+    "knocked": 0.03333333333333333,
+    "wall_s": 297.25725748700006
+   },
+   {
+    "round": 2,
+    "beta": 0.0,
+    "episodes": 30,
+    "rows": 2092,
+    "alpha": 100.0,
+    "success": 0.9666666666666667,
+    "travel": 1.0,
+    "knocked": 0.03333333333333333,
+    "wall_s": 442.8538031339999
+   },
+   {
+    "round": 3,
+    "beta": 0.0,
+    "episodes": 30,
+    "rows": 2769,
+    "alpha": 100.0,
+    "success": 1.0,
+    "travel": 1.0,
+    "knocked": 0.0,
+    "wall_s": 589.682515108
+   }
+  ],
+  "rows": 2769
+ },
+ "readout_alpha": 100.0,
+ "action_r2_dagger_cv": {
+  "DN candidates": {
+   "dx": 0.7308096488555886,
+   "dy": 0.8870773143755383,
+   "dz": 0.5452615236112768
+  },
+  "all DNs": {
+   "dx": 0.8104372990610149,
+   "dy": 0.903694858368136,
+   "dz": 0.5721538594178656
+  },
+  "4 signals (no brain)": {
+   "dx": 0.9476633663492814,
+   "dy": 0.9589684835801477,
+   "dz": 0.6361281343513284
+  }
+ },
+ "action_r2_test": {
+  "dx": 0.7001796717507534,
+  "dy": 0.8805185172169864,
+  "dz": 0.6647400990591414
+ },
+ "fallback_used": false,
+ "results": {
+  "expert": {
+   "n": 50,
+   "success": 50,
+   "success_rate": 1.0,
+   "ci": [
+    0.9286499658256813,
+    1.0
+   ],
+   "travel_rate": 1.0,
+   "knocked_rate": 0.0,
+   "median_steps": 15.0,
+   "median_min_xy_mm": 0.20648324470633414,
+   "median_final_z_mm": 37.985183138525876
+  },
+  "signals": {
+   "n": 50,
+   "success": 50,
+   "success_rate": 1.0,
+   "ci": [
+    0.9286499658256813,
+    1.0
+   ],
+   "travel_rate": 1.0,
+   "knocked_rate": 0.0,
+   "median_steps": 17.0,
+   "median_min_xy_mm": 0.08282448307901111,
+   "median_final_z_mm": 25.21507155196997
+  },
+  "brain": {
+   "n": 50,
+   "success": 50,
+   "success_rate": 1.0,
+   "ci": [
+    0.9286499658256813,
+    1.0
+   ],
+   "travel_rate": 1.0,
+   "knocked_rate": 0.0,
+   "median_steps": 17.5,
+   "median_min_xy_mm": 1.197302469164348,
+   "median_final_z_mm": 26.60658239153502
+  },
+  "cut feedback": {
+   "n": 20,
+   "success": 0,
+   "success_rate": 0.0,
+   "ci": [
+    0.0,
+    0.16113012549493322
+   ],
+   "travel_rate": 0.3,
+   "knocked_rate": 0.0,
+   "median_steps": null,
+   "median_min_xy_mm": 29.684759141702663,
+   "median_final_z_mm": 18.704372587628214
+  }
+ },
+ "pass_rule": "brain >= 70% and > cut feedback",
+ "passed": true,
+ "video": null,
+ "video_seeds": [
+  90000,
+  90001
+ ],
+ "brain_s": 253.88,
+ "wall_min": 20.06067969751667
+}

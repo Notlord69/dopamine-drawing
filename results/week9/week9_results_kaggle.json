@@ -1,0 +1,333 @@
+{
+ "host": "kaggle",
+ "quick": false,
+ "gpu": "Tesla T4 (x2)",
+ "k_wide": 3000,
+ "rule": {
+  "end_min": 0.85,
+  "r2_drop": 0.05,
+  "grip_drop": 0.02,
+  "tie": 0.03,
+  "partial_gain": 0.1
+ },
+ "counts": {
+  "rows": 14273,
+  "episodes": 120,
+  "rounds": 4,
+  "region": 1037,
+  "trap": 391,
+  "press": 1834,
+  "release": 137,
+  "trap_by_round": [
+   97,
+   114,
+   2,
+   178
+  ],
+  "trap_label_up": 1.0,
+  "region_share": 0.073
+ },
+ "offline": [
+  {
+   "candidate": "C0 week 8b (round-0 selection)",
+   "labels": "B",
+   "select": "round0",
+   "weight": false,
+   "dx R2": 0.343,
+   "dy R2": 0.719,
+   "dz R2": 0.428,
+   "grip bal. acc.": 0.879,
+   "trap: dz up": 0.435,
+   "trap: mean dz (mm/step)": 1.9,
+   "trap: grip open": 0.987,
+   "press: dz down": 0.756,
+   "release: grip open": 0.533,
+   "end score": 0.435
+  },
+  {
+   "candidate": "C1 reselect on all data",
+   "labels": "B",
+   "select": "all",
+   "weight": false,
+   "dx R2": 0.342,
+   "dy R2": 0.72,
+   "dz R2": 0.434,
+   "grip bal. acc.": 0.879,
+   "trap: dz up": 0.453,
+   "trap: mean dz (mm/step)": 2.2,
+   "trap: grip open": 0.987,
+   "press: dz down": 0.767,
+   "release: grip open": 0.526,
+   "end score": 0.453
+  },
+  {
+   "candidate": "C2 weight the release region",
+   "labels": "B",
+   "select": "round0",
+   "weight": true,
+   "dx R2": 0.341,
+   "dy R2": 0.71,
+   "dz R2": 0.368,
+   "grip bal. acc.": 0.875,
+   "trap: dz up": 0.903,
+   "trap: mean dz (mm/step)": 11.7,
+   "trap: grip open": 1.0,
+   "press: dz down": 0.683,
+   "release: grip open": 0.912,
+   "end score": 0.683
+  },
+  {
+   "candidate": "C3 B2 graded retreat",
+   "labels": "B2",
+   "select": "round0",
+   "weight": false,
+   "dx R2": 0.344,
+   "dy R2": 0.719,
+   "dz R2": 0.434,
+   "grip bal. acc.": 0.879,
+   "trap: dz up": 0.471,
+   "trap: mean dz (mm/step)": 2.6,
+   "trap: grip open": 0.987,
+   "press: dz down": 0.758,
+   "release: grip open": 0.526,
+   "end score": 0.471
+  },
+  {
+   "candidate": "C4 reselect + weight",
+   "labels": "B",
+   "select": "all",
+   "weight": true,
+   "dx R2": 0.339,
+   "dy R2": 0.71,
+   "dz R2": 0.378,
+   "grip bal. acc.": 0.875,
+   "trap: dz up": 0.926,
+   "trap: mean dz (mm/step)": 11.9,
+   "trap: grip open": 1.0,
+   "press: dz down": 0.701,
+   "release: grip open": 0.927,
+   "end score": 0.701
+  },
+  {
+   "candidate": "C5 B2 + reselect + weight",
+   "labels": "B2",
+   "select": "all",
+   "weight": true,
+   "dx R2": 0.338,
+   "dy R2": 0.71,
+   "dz R2": 0.384,
+   "grip bal. acc.": 0.875,
+   "trap: dz up": 0.928,
+   "trap: mean dz (mm/step)": 12.6,
+   "trap: grip open": 1.0,
+   "press: dz down": 0.7,
+   "release: grip open": 0.92,
+   "end score": 0.7
+  },
+  {
+   "candidate": "G gated by decoded grip (not linear)",
+   "labels": "B",
+   "select": "all",
+   "weight": false,
+   "dx R2": 0.479,
+   "dy R2": 0.75,
+   "dz R2": 0.553,
+   "grip bal. acc.": 0.879,
+   "trap: dz up": 0.844,
+   "trap: mean dz (mm/step)": 8.2,
+   "trap: grip open": 0.987,
+   "press: dz down": 0.897,
+   "release: grip open": 0.526,
+   "end score": 0.844
+  }
+ ],
+ "decision": "partial",
+ "rule_pick": "C4 reselect + weight",
+ "why": "no candidate reaches 85% on both end phases; best is C4 reselect + weight: trap up 93%, press down 70% (C0: trap up 44%, press down 76%): run it",
+ "chosen": "C4 reselect + weight",
+ "forced": null,
+ "closed_loop": true,
+ "passed": true,
+ "table": [
+  {
+   "policy": "connectome, C4",
+   "success": "46/50",
+   "success rate": 0.92,
+   "95% CI": "81%-97%",
+   "placement error, successes (mm, median)": 11.3,
+   "placement error, all lifted (mm, median)": 11.3,
+   "time to complete (s, median)": 3.26,
+   "lifted": 0.98,
+   "carried to zone": 0.98,
+   "stalled": 0.0
+  },
+  {
+   "policy": "connectome, wide readout (week 8b)",
+   "success": "25/50",
+   "success rate": 0.5,
+   "95% CI": "37%-63%",
+   "placement error, successes (mm, median)": 10.3,
+   "placement error, all lifted (mm, median)": 12.1,
+   "time to complete (s, median)": 3.24,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "connectome, DN readout (week 8)",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 29.1,
+   "time to complete (s, median)": NaN,
+   "lifted": 1.0,
+   "carried to zone": 0.88,
+   "stalled": 0.0
+  },
+  {
+   "policy": "expert, B",
+   "success": "50/50",
+   "success rate": 1.0,
+   "95% CI": "93%-100%",
+   "placement error, successes (mm, median)": 2.7,
+   "placement error, all lifted (mm, median)": 2.7,
+   "time to complete (s, median)": 1.92,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  },
+  {
+   "policy": "linear on 8 signals, B",
+   "success": "0/50",
+   "success rate": 0.0,
+   "95% CI": "0%-7%",
+   "placement error, successes (mm, median)": NaN,
+   "placement error, all lifted (mm, median)": 18.8,
+   "time to complete (s, median)": NaN,
+   "lifted": 0.44,
+   "carried to zone": 0.32,
+   "stalled": 0.9
+  },
+  {
+   "policy": "MLP on 8 signals, B",
+   "success": "50/50",
+   "success rate": 1.0,
+   "95% CI": "93%-100%",
+   "placement error, successes (mm, median)": 2.6,
+   "placement error, all lifted (mm, median)": 2.6,
+   "time to complete (s, median)": 1.92,
+   "lifted": 1.0,
+   "carried to zone": 1.0,
+   "stalled": 0.0
+  }
+ ],
+ "outcomes": {
+  "connectome, C4": {
+   "success": 46,
+   "still holding the cube": 3,
+   "never lifted": 1
+  },
+  "connectome, wide readout (week 8b)": {
+   "put down in zone, not finished": 25,
+   "success": 25
+  },
+  "connectome, DN readout (week 8)": {
+   "dropped or put down outside the zone": 7,
+   "put down in zone, not finished": 17,
+   "still holding the cube": 26
+  },
+  "expert, B": {
+   "success": 50
+  },
+  "linear on 8 signals, B": {
+   "still holding the cube": 22,
+   "never lifted": 28
+  },
+  "MLP on 8 signals, B": {
+   "success": 50
+  }
+ },
+ "networks": {
+  "connectome, C4": {
+   "dagger_log": [
+    {
+     "round": 0,
+     "beta": 1.0,
+     "episodes": 30,
+     "rows": 1817,
+     "alpha": [
+      1000.0,
+      1000.0
+     ],
+     "success": 1.0,
+     "lifted": 1.0,
+     "wall_s": 226.23497696899994
+    },
+    {
+     "round": 1,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 5612,
+     "alpha": [
+      3162.2776601683795,
+      3162.2776601683795
+     ],
+     "success": 0.23333333333333334,
+     "lifted": 0.7333333333333333,
+     "wall_s": 668.221003481
+    },
+    {
+     "round": 2,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 9580,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.23333333333333334,
+     "lifted": 0.7666666666666667,
+     "wall_s": 1131.4879262990003
+    },
+    {
+     "round": 3,
+     "beta": 0.0,
+     "episodes": 30,
+     "rows": 13849,
+     "alpha": [
+      3162.2776601683795,
+      10000.0
+     ],
+     "success": 0.3333333333333333,
+     "lifted": 1.0,
+     "wall_s": 1631.277246519
+    }
+   ],
+   "cut": {
+    "n": 10,
+    "success": 0,
+    "success_rate": 0.0,
+    "ci": [
+     0.0,
+     0.2775401687666166
+    ],
+    "place_mm_success": null,
+    "place_mm_lifted": null,
+    "time_s": null,
+    "lifted_rate": 0.0,
+    "zone_rate": 0.0,
+    "lift_time_s": null,
+    "stalled_rate": 0.9,
+    "outcomes": {
+     "never lifted": 10
+    },
+    "grip_switches": 0.0
+   },
+   "trap": [],
+   "wall_min": 38.34211289365
+  }
+ },
+ "verdict": null,
+ "wall_min": 61.3468358401
+}
