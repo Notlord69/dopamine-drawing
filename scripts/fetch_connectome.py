@@ -1,30 +1,26 @@
 #!/usr/bin/env python
-"""Download the FlyEM male CNS v1.0 connectome and build the files the code expects.
+"""Download the FlyEM male CNS v1.0 connectome and build the signed weight set.
 
-    python scripts/fetch_connectome.py [--data-dir DIR] [--neurons FILE] [--skip-shortlist]
+    python scripts/fetch_connectome.py [--data-dir DIR] [--neurons FILE] [--weights-feather FILE] [--delete-raw]
 
-Writes into the data folder (default: $FLYARM_DATA_DIR or <repo>/data):
+Writes into the data folder (default: $DD_DATA_DIR or <repo>/data):
 
     raw/connectome-weights-male-cns-v1.0-minconf-0.5.feather   official bulk export (1.1 GB, download)
     neurons_male-cns_v1.0.parquet       neuron table from neuPrint (male-cns:v1.0)
-    shortlist_week1.csv                 335 JO-C/E inputs, 68 DN candidates, 81 front-leg MNs
-    dn_ranking_week1.csv                every DN's input/output path score (shortlist's source)
     connections_male-cns_v1.0.parquet   neuron-to-neuron connections (176,422 neurons)
     weights_male-cns_v1.0/              neurons_signs.parquet, edges.parquet, W_signed_counts.npz, meta.json
-    wsyn_choice.json                    w_scale 0.70 (week 2's choice, copied from results/week2/)
-    week7/week7_random_network_meta.json  the week 7 random network's w_scale (copied from results/week7/)
 
-This is the project's week 1-2 pipeline as one script (archive/notebooks/01_status.ipynb and
-02_weights_VERSION2.ipynb), same queries, rules and outputs. The neuron table and the DN shortlist
-come from neuPrint, which needs a (free) token: https://neuprint.janelia.org -> Account -> Auth token,
-then `export NEUPRINT_TOKEN=...`. Never put the token in a file in this repo.
+If you already have these from fly-connectome-arm, skip this and point DD_DATA_DIR at that folder.
+
+The neuron table comes from neuPrint, which needs a (free) token: https://neuprint.janelia.org ->
+Account -> Auth token, then `export NEUPRINT_TOKEN=...`. Never put the token in a file in this repo.
 
 Data: FlyEM male CNS connectome v1.0 (HHMI Janelia FlyEM, University of Cambridge, MRC LMB,
 Google Research), CC-BY 4.0. See ATTRIBUTION.md.
 
 Memory: the filter runs in pyarrow without a pandas copy (it ran in a 4 GB WSL session).
 """
-import argparse, json, os, shutil, sys, time
+import argparse, json, os, sys, time
 from pathlib import Path
 
 import numpy as np
@@ -35,8 +31,7 @@ RELEASE = 'https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/fl
 F_WEIGHTS_NAME = 'connectome-weights-male-cns-v1.0-minconf-0.5.feather'
 NEUPRINT = 'https://neuprint.janelia.org'
 DATASET = 'male-cns:v1.0'
-EXPECT = dict(neurons=176_422, connections=25_862_574, baseline_edges=24_287_791,
-              jo=335, dn_candidates=68, leg_mn=81)
+EXPECT = dict(neurons=176_422, connections=25_862_574, baseline_edges=24_287_791)
 
 
 def say(*a):
@@ -70,7 +65,7 @@ def download(url, dest, chunk=1 << 22):
     return dest
 
 
-# ---------------------------------------------------------------- week 1: neuPrint tables
+# ---------------------------------------------------------------- neuPrint neuron table
 def neuprint_client():
     tok = os.environ.get('NEUPRINT_TOKEN')
     if not tok:
@@ -81,7 +76,7 @@ def neuprint_client():
 
 
 def fetch_neurons(c, out):
-    """01_status.ipynb cells 7-9: every Neuron with type, class, transmitter and side."""
+    """Every Neuron with type, class, transmitter and side."""
     props = c.fetch_custom("""
         MATCH (n:Neuron) WITH n LIMIT 2000
         UNWIND keys(n) AS k
@@ -103,75 +98,9 @@ def fetch_neurons(c, out):
     return neurons
 
 
-def fetch_shortlist(c, neurons, data):
-    """01_status.ipynb cells 2-4 and 6: JO-C/E inputs, front-leg (ProLN) motor neurons, and the DN
-    candidates ranked by two-hop input and output path strength (connections with >= 5 synapses)."""
-    from neuprint import fetch_adjacencies, NeuronCriteria as NC
-    extra = c.fetch_custom("""
-        MATCH (n:Neuron)
-        WHERE n.superclass IN ['vnc_motor', 'cb_sensory']
-        RETURN n.bodyId AS bodyId, n.somaNeuromere AS neuromere,
-               n.exitNerve AS exitNerve, n.entryNerve AS entryNerve
-    """)
-    df = neurons.merge(extra, on='bodyId', how='left')
-    mn_all = df[df.cls == 'vnc_motor']
-    S = df[(df.cls == 'cb_sensory') & df['type'].astype(str).str.match(r'^JO-(C|E)')]
-    MN = mn_all[mn_all['neuromere'].astype(str).str.contains('T1') & (mn_all['exitNerve'] == 'ProLN')]
-    DN = df[df.cls == 'descending_neuron']
-    say(f"  JO-C/E {len(S)}, front-leg (ProLN) MNs {len(MN)}, DNs {len(DN)}")
-
-    post_total = neurons.set_index('bodyId')['post']
-
-    def edges(src=None, tgt=None):
-        """Connections with >=5 synapses, as a fraction of the target's total input."""
-        _, conn = fetch_adjacencies(NC(bodyId=list(src)) if src is not None else None,
-                                    NC(bodyId=list(tgt)) if tgt is not None else None,
-                                    min_total_weight=5)
-        e = conn.groupby(['bodyId_pre', 'bodyId_post'], as_index=False)['weight'].sum()
-        e['frac'] = e['weight'] / e['bodyId_post'].map(post_total)
-        return e
-
-    S_ids, DN_ids, MN_ids = set(S.bodyId), set(DN.bodyId), set(MN.bodyId)
-    e1 = edges(src=S_ids)
-    e2 = edges(src=set(e1.bodyId_post), tgt=DN_ids)
-    two_in = e1.merge(e2, left_on='bodyId_post', right_on='bodyId_pre', suffixes=('_1', '_2'))
-    two_in['path'] = two_in.frac_1 * two_in.frac_2
-    in_score = (two_in.groupby('bodyId_post_2')['path'].sum()
-                .add(e1[e1.bodyId_post.isin(DN_ids)].groupby('bodyId_post')['frac'].sum(), fill_value=0))
-    e3 = edges(tgt=MN_ids)
-    e4 = edges(src=DN_ids, tgt=set(e3.bodyId_pre))
-    two_out = e4.merge(e3, left_on='bodyId_post', right_on='bodyId_pre', suffixes=('_1', '_2'))
-    two_out['path'] = two_out.frac_1 * two_out.frac_2
-    out_score = (two_out.groupby('bodyId_pre_1')['path'].sum()
-                 .add(e3[e3.bodyId_pre.isin(DN_ids)].groupby('bodyId_pre')['frac'].sum(), fill_value=0))
-    rank = pd.DataFrame({'in_score': in_score, 'out_score': out_score}).fillna(0)
-    rank['score'] = np.sqrt(rank.in_score * rank.out_score)
-    rank = rank.join(DN.set_index('bodyId')[['type', 'instance']]).sort_values('score', ascending=False)
-    rank.to_csv(data / 'dn_ranking_week1.csv')
-
-    pick = (set(rank.nlargest(10, 'in_score').index) | set(rank.nlargest(10, 'out_score').index)
-            | set(rank.nlargest(10, 'score').index))
-    types = rank.loc[list(pick), 'type'].unique()          # both L and R of each type
-    DN_mid = DN[DN['type'].isin(types)].merge(rank[['in_score', 'out_score', 'score']],
-                                              left_on='bodyId', right_index=True)
-    DN_mid['role'] = np.where(DN_mid.in_score > 3 * DN_mid.out_score, 'input-side',
-                              np.where(DN_mid.out_score > 3 * DN_mid.in_score, 'output-side', 'bridge'))
-    cols = ['bodyId', 'type', 'instance', 'side', 'nt']
-    shortlist = pd.concat([S[cols].assign(group='input_JO-CE'),
-                           DN_mid[cols + ['in_score', 'out_score', 'score', 'role']].assign(group='middle_descending'),
-                           MN[cols].assign(group='output_T1_leg_MN')], ignore_index=True)
-    shortlist.to_csv(data / 'shortlist_week1.csv', index=False)
-    counts = shortlist['group'].value_counts().to_dict()
-    say(f"  shortlist: {counts}")
-    for g, k in (('input_JO-CE', 'jo'), ('middle_descending', 'dn_candidates'), ('output_T1_leg_MN', 'leg_mn')):
-        if counts.get(g) != EXPECT[k]:
-            say(f"  WARNING: {g} has {counts.get(g)} neurons; the project used {EXPECT[k]}")
-    return shortlist
-
-
-# ---------------------------------------------------------------- week 2: connection table and weights
+# ---------------------------------------------------------------- connection table and weights
 def build_connections(f_weights, neurons, out):
-    """02_weights_VERSION2.ipynb cell B: neuron-to-neuron rows of the bulk export, no synapse cutoff."""
+    """Neuron-to-neuron rows of the bulk export, no synapse cutoff."""
     import pyarrow as pa, pyarrow.dataset as ds, pyarrow.parquet as pq
     PRE, POST, W = 'body_pre', 'body_post', 'weight'
     dset = ds.dataset(f_weights, format='ipc')
@@ -188,7 +117,7 @@ def build_connections(f_weights, neurons, out):
 
 
 def build_weights(tbl, neurons, out_dir, source_name):
-    """02_weights_VERSION2.ipynb cells C-G: sign table, edge list in model indices, signed matrix, meta."""
+    """Sign table, edge list in model indices, signed matrix, meta."""
     import pyarrow as pa, pyarrow.parquet as pq, scipy.sparse as sp
     PRE, POST, W = 'body_pre', 'body_post', 'weight'
     N = len(neurons)
@@ -248,29 +177,16 @@ def build_weights(tbl, neurons, out_dir, source_name):
         f"{int(count.sum()):,} synapses, {meta['guessed_neurons']:,} transmitters guessed")
     for k, v in (('neurons', N), ('connections', len(count)), ('baseline_edges', W_signed.nnz)):
         if v != EXPECT[k]:
-            say(f"  WARNING: {k} = {v:,}; the project's weight set has {EXPECT[k]:,}")
+            say(f"  WARNING: {k} = {v:,}; the reference weight set has {EXPECT[k]:,}")
     return meta
-
-
-def copy_params(data):
-    """The two small run parameters the notebooks read, from results/."""
-    pairs = [(REPO / 'results' / 'week2' / 'wsyn_choice.json', data / 'wsyn_choice.json'),
-             (REPO / 'results' / 'week7' / 'week7_random_network_meta.json',
-              data / 'week7' / 'week7_random_network_meta.json')]
-    for src, dst in pairs:
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        if not dst.exists():
-            shutil.copy(src, dst)
-        say(f"  {dst.relative_to(data)}")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--data-dir', type=Path,
-                    default=Path(os.environ.get('FLYARM_DATA_DIR', REPO / 'data')))
+                    default=Path(os.environ.get('DD_DATA_DIR', REPO / 'data')))
     ap.add_argument('--neurons', type=Path, help='use this neuron table instead of querying neuPrint')
     ap.add_argument('--weights-feather', type=Path, help='use this local copy of the bulk weights file')
-    ap.add_argument('--skip-shortlist', action='store_true', help="don't query the DN shortlist (needs neuPrint)")
     ap.add_argument('--delete-raw', action='store_true', help='delete the 1.1 GB download when done')
     a = ap.parse_args()
     data = a.data_dir.resolve()
@@ -279,7 +195,6 @@ def main():
 
     say("1. neuron table (neuPrint)")
     f_neurons = data / 'neurons_male-cns_v1.0.parquet'
-    c = None
     if a.neurons:
         neurons = pd.read_parquet(a.neurons)
         if a.neurons.resolve() != f_neurons:
@@ -288,29 +203,18 @@ def main():
         neurons = pd.read_parquet(f_neurons)
         say(f"  have {f_neurons.name}")
     else:
-        c = neuprint_client()
-        neurons = fetch_neurons(c, f_neurons)
+        neurons = fetch_neurons(neuprint_client(), f_neurons)
 
-    say("2. DN shortlist (neuPrint)")
-    if a.skip_shortlist:
-        say("  skipped")
-    elif (data / 'shortlist_week1.csv').exists():
-        say("  have shortlist_week1.csv")
-    else:
-        fetch_shortlist(c or neuprint_client(), neurons, data)
-
-    say("3. bulk connectome export")
+    say("2. bulk connectome export")
     f_w = a.weights_feather or download(RELEASE + F_WEIGHTS_NAME, data / 'raw' / F_WEIGHTS_NAME)
 
-    say("4. neuron-to-neuron connections")
+    say("3. neuron-to-neuron connections")
     tbl = build_connections(f_w, neurons, data / 'connections_male-cns_v1.0.parquet')
 
-    say("5. weight set")
+    say("4. weight set")
     build_weights(tbl, neurons, data / 'weights_male-cns_v1.0', Path(f_w).name)
     del tbl
 
-    say("6. run parameters")
-    copy_params(data)
     if a.delete_raw and not a.weights_feather:
         (data / 'raw' / F_WEIGHTS_NAME).unlink(missing_ok=True)
     say("done")

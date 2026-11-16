@@ -23,7 +23,7 @@ The published version is linked from the site at https://www.cell.com/cell/fullt
 **No connectome data is redistributed in this repository.** `scripts/fetch_connectome.py`
 downloads it from the official sources.
 
-**What was changed** (`scripts/fetch_connectome.py`, `sim/lif.py`, `sim/network7.py`):
+**What was changed** (`scripts/fetch_connectome.py`, `dopamine_drawing/connectome.py`, `dopamine_drawing/lif.py`):
 
 - Only neuron-to-neuron connections among the 176,422 neurons in neuPrint's `Neuron` table are
   kept, from `connectome-weights-male-cns-v1.0-minconf-0.5.feather`. No synapse-count cutoff is
@@ -36,12 +36,15 @@ downloads it from the official sources.
   transmitter of the same cell type, or acetylcholine if there is none. Histamine fills are allowed
   only in the optic lobe.
 - Every neuron gets the **same leaky integrate-and-fire parameters** (Shiu et al. 2024, below). One
-  global synapse strength scales all weights (w_scale 0.70). There is no plasticity: the network is
-  frozen.
-- The control networks are **degree-preserving shuffles** of this weight set: connection targets
+  global synapse strength scales all weights.
+- The model runs on a **subnetwork** (input neurons, interneurons, descending neurons), not the
+  whole CNS. A chosen subset of its synapses is **plastic** under reward-modulated STDP. Signs stay
+  fixed and weights stay within bounds, but they move away from the synapse counts during learning.
+- Input neurons are driven by Poisson spike trains that encode a target's direction. This is not
+  their biological input. Dopamine is modelled as a single global reward signal, not as the fly's
+  dopaminergic neurons.
+- Control networks are **degree-preserving shuffles** of the weight set: connection targets
   are permuted.
-- 335 JO-C/E neurons are used as inputs, driven by Poisson spike trains that encode a robot arm's
-  state. This is not their biological input.
 
 These are modelling choices for a robotics experiment. The model is not a validated description of
 the fly's nervous system. **No endorsement** of this project by FlyEM, HHMI Janelia, the
@@ -58,7 +61,7 @@ The LIF neuron and synapse model and its parameters follow:
 > *Nature* **634**, 210–219 (2024). doi:[10.1038/s41586-024-07763-9](https://doi.org/10.1038/s41586-024-07763-9)
 
 The reference code is https://github.com/philshiu/Drosophila_brain_model (`model.py`). This
-project re-implements the same equations, with the changes listed at the top of `sim/lif.py`. No
+project re-implements the same equations (`dopamine_drawing/lif.py`). No
 code from that repository is included.
 
 ## Robot model: MuJoCo Menagerie, Franka Emika Panda (Apache-2.0)
@@ -66,26 +69,21 @@ code from that repository is included.
 - MuJoCo Menagerie `franka_emika_panda`: https://github.com/google-deepmind/mujoco_menagerie.
   Its own `LICENSE` file is the **Apache License 2.0**. The model is derived from Franka Emika's
   `franka_ros` description. It is **not redistributed** here. `scripts/fetch_panda_model.sh` fetches
-  it at a pinned commit. `arm/panda_env.py` adds a table, a cube and a target zone at load time and
-  scales up the gripper force (10×). It doesn't modify the model files.
+  it at a pinned commit. `dopamine_drawing/panda_env.py` adds a table, a cube and a target zone at load time
+  and scales up the gripper force (10×). It doesn't modify the model files.
 - MuJoCo physics engine (Google DeepMind), Apache-2.0: https://github.com/google-deepmind/mujoco
 
 ## Software
 
 | package | used for | licence |
 |---|---|---|
-| Brian2 | reference LIF simulator (weeks 2–3), units | CeCILL-2.1 |
-| numba | the CPU engine | BSD |
-| PyTorch | the batched GPU engine | BSD-3-Clause (plus bundled components' licences) |
+| PyTorch | the LIF / R-STDP engine | BSD-3-Clause (plus bundled components' licences) |
 | NumPy, SciPy, pandas | everything | BSD-3-Clause |
 | PyArrow | connectome tables | Apache-2.0 |
 | MuJoCo (Python bindings) | arm simulation and rendering | Apache-2.0 |
 | neuprint-python (HHMI) | neuPrint queries | BSD-style |
-| Matplotlib | figures and video panels | Matplotlib licence (PSF-based) |
+| Matplotlib | figures | Matplotlib licence (PSF-based) |
 | imageio, imageio-ffmpeg, Pillow | video | BSD-2-Clause, BSD-2-Clause, MIT-CMU (HPND) |
-| FFmpeg | demo video (command-line tool, not bundled) | LGPL/GPL |
 
-## Compute
-
-The final experiments ran on Kaggle notebooks (NVIDIA Tesla T4) and the earlier weeks partly on
-Google Colab.
+The connectome pipeline, LIF engine and arm controller come from the author's earlier project,
+fly-connectome-arm (https://github.com/Notlord69/fly-connectome-arm, MIT).

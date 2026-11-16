@@ -4,6 +4,7 @@ outputs/
 mujoco_menagerie/
 *.npz
 *.pkl
+*.pt
 *.feather
 *.parquet
 *.npy

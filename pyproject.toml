@@ -3,31 +3,21 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fly-connectome-arm"
-version = "1.0.0"
-description = "A frozen spiking model of the whole male Drosophila CNS drives a simulated Franka Panda through pick-and-place."
+name = "dopamine-drawing"
+version = "0.1.0"
+description = "A MaleCNS fly-brain subnetwork learns to draw with a simulated Franka Panda through reward-modulated STDP."
 readme = "README.md"
 requires-python = ">=3.10"
 # Exact pins are in requirements.txt; these are the import-time needs.
-dependencies = ["numpy", "scipy", "pandas", "pyarrow", "brian2", "numba", "mujoco"]
+dependencies = ["numpy", "scipy", "pandas", "pyarrow", "torch", "mujoco"]
 
 [project.optional-dependencies]
-video = ["matplotlib", "imageio", "imageio-ffmpeg", "pillow"]
-gpu = ["torch"]
+viz = ["matplotlib", "imageio", "imageio-ffmpeg", "pillow"]
 data = ["neuprint-python", "requests"]
 test = ["pytest"]
 
-# The package keeps the module names the experiments ran with (sim.*, panda_env, expert):
-# the saved results (.pkl) store readout objects by those names, so renaming them would make the
-# week 9/10 outputs unloadable for the warm starts in notebooks/.
 [tool.setuptools]
-packages = ["sim"]
-py-modules = ["panda_env", "expert"]
-
-[tool.setuptools.package-dir]
-"" = "arm"
-sim = "sim"
+packages = ["dopamine_drawing"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-filterwarnings = ["ignore::DeprecationWarning"]   # Brian2 uses deprecated pyparsing names

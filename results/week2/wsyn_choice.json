@@ -1,7 +1,0 @@
-{
-  "w_scale": 0.7,
-  "w_syn_mV": 0.1925,
-  "status": "chosen on subnetworks; confirm on full network",
-  "rule": "lowest scale with MN9_L >= 20 Hz and DN candidate mean >= 20 Hz, both subnetworks <= 30% firing",
-  "weights": "weights_male-cns_v1.0"
-}

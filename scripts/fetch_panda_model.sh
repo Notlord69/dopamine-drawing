@@ -3,7 +3,7 @@
 #
 #   scripts/fetch_panda_model.sh [target_dir]      default: <repo>/mujoco_menagerie
 #
-# arm/panda_env.py looks in <repo>/mujoco_menagerie, or in $FLYARM_MENAGERIE if that is set.
+# dopamine_drawing/config.py looks in <repo>/mujoco_menagerie, or in $DD_MENAGERIE if that is set.
 # Pinned to the commit closest to the copy the experiments ran with (2026-10-14). Its
 # franka_emika_panda/ folder matches that copy except one whitespace-only difference in panda.xml.
 set -euo pipefail

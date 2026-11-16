@@ -1,21 +1,20 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite it as below, and cite the connectome (FlyEM male CNS v1.0) and the model (Shiu et al. 2024) it builds on; see ATTRIBUTION.md."
-title: "A fly's brain drives a robot arm: a frozen male Drosophila CNS connectome as a pick-and-place controller"
+title: "Dopamine Drawing: a male Drosophila CNS subnetwork learns to draw by reward-modulated STDP"
 type: software
 authors:
   - alias: Notlord69
     email: m06robotic@gmail.com
-version: 1.0.0
-date-released: 2026-11-15
+version: 0.1.0
 license: MIT
-repository-code: "https://github.com/Notlord69/fly-connectome-arm"
 keywords:
   - connectome
   - drosophila
   - spiking-neural-network
   - mujoco
   - robotics
-  - imitation-learning
+  - reinforcement-learning
+  - stdp
 references:
   - type: article
     title: "Sexual dimorphism in the complete connectome of the Drosophila male central nervous system"
